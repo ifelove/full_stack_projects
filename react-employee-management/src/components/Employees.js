@@ -1,9 +1,8 @@
 import React from "react";
-import data from "../tempData"
+import data from "../tempData";
 
 const Employees = () => {
- 
- console.log(data);
+  console.log(data);
   return (
     <div className="employeeList">
       <h3 className="main-heading">Employees list</h3>
@@ -19,11 +18,25 @@ const Employees = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="row">
-              <td className="tbtd">firstlist</td>
-              <td className="tbtd">secondlist</td>
-              <td className="tbtd">thirdlist</td>
-            </tr>
+            {data.map((user) => {
+              const { Firstname, Lastname, Email,id } = user;
+              console.log(user)
+              return (
+                <tr className="row" key={id}>
+                  <td className="tbtd">{Firstname}</td>
+                  <td className="tbtd">{Lastname}</td>
+                  <td className="tbtd">{Email}</td>
+                  <td className="tbtd">
+                    <section className="inlineBtn">
+                      <button className="btnEdit">Edit</button>
+                      <span>
+                        <button className="btnDelete">Delete</button>
+                      </span>
+                    </section>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </section>

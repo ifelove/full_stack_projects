@@ -10,7 +10,7 @@ export const AppProvider = ({ children }) => {
   
   return (
     <AppContext.Provider
-      value={{ firstname, setFirstname, laststname, emailId }}
+      value={{ firstname, setFirstname, laststname,setLastname, emailId,setEmailId }}
     >
       {children}
     </AppContext.Provider>

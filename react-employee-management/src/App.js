@@ -13,11 +13,11 @@ function App() {
     <div>
       <Header />
       <div className="employee-list-component">
-        <Employees />
+        <Form />
+        {/**<Employees /> */}
       </div>
       <div className="footer-component">
         <Footer />
-        <Form/>
       </div>
     </div>
   );
