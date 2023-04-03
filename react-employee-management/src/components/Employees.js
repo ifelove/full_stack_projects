@@ -1,12 +1,46 @@
-import React from "react";
+//import {createBrowserHistory} from 'history';
+//export default createBrowserHistory();
+
+import React, { Component } from "react";
 import data from "../tempData";
 
+import { Link, useNavigate } from "react-router-dom";
+
+import { useGlobalContex } from "../contex";
+import { getEmployees } from "../Service/EmployeeService";
+
+const url = "http://localhost:4000/api/vi/items";
+
 const Employees = () => {
-  console.log(data);
+  const navigate = useNavigate();
+  const { employees, setEmpolyees, firstname, lastname } = useGlobalContex();
+
+  getEmployees()
+    .then((res) => {
+      const data = res.data;
+      setEmpolyees(res.data.items);
+      console.log("this is new item", employees);
+    })
+    .catch((error) => console.log(error)); //.then((res)=>{console.log(res.data.items)})
+  //console.log("hello")
+  // console.log(employees);
+
+  const addEmployee = () => {
+    console.log("Hello");
+  };
+
+  const editEmployee = (id) => {
+    navigate(`/update-employee/${id}`);
+  };
+
   return (
     <div className="employeeList">
       <h3 className="main-heading">Employees list</h3>
-      <div className="addbtn">Add Employee</div>
+
+      <Link to={"/form"}>
+        <div className="addbtn">Add Employee</div>
+      </Link>
+
       <section className="employee-table">
         <table className="table">
           <thead className="tablehead">
@@ -18,17 +52,23 @@ const Employees = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((user) => {
-              const { Firstname, Lastname, Email,id } = user;
-              console.log(user)
+            {employees.map((user) => {
+              const { name, _id } = user;
+              console.log("the id" + _id);
               return (
-                <tr className="row" key={id}>
-                  <td className="tbtd">{Firstname}</td>
-                  <td className="tbtd">{Lastname}</td>
-                  <td className="tbtd">{Email}</td>
+                <tr className="row" key={_id}>
+                  <td className="tbtd">{name}</td>
+                  <td className="tbtd">{name}</td>
+                  <td className="tbtd">{name}</td>
                   <td className="tbtd">
                     <section className="inlineBtn">
-                      <button className="btnEdit">Edit</button>
+                      <button
+                        className="btnEdit"
+                        onClick={() => editEmployee(_id)
+                        }
+                      >
+                        Update
+                      </button>
                       <span>
                         <button className="btnDelete">Delete</button>
                       </span>

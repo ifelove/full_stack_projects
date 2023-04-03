@@ -1,5 +1,6 @@
 import React from "react";
 import { useGlobalContex } from "../contex";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   //const {firstname}=useGlobalContex()
@@ -12,10 +13,14 @@ const Header = () => {
 
       <section className="headerlinks">
         <div className="links">
-          <h3>Employees</h3>
+          <NavLink to={"/"}>
+            <h3>Employees</h3>
+          </NavLink>
         </div>
         <div className="links">
-          <h3>Add Employee</h3>
+          <NavLink to={"/form"}>
+            <h3>Add Employee</h3>
+          </NavLink>
         </div>
       </section>
     </div>
