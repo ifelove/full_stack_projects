@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "http://localhost:4000/api/vi/items";
+const url = "http://localhost:4000/api/vi/items/";
 
 /**
 const getEmployees = async () => {
@@ -28,6 +28,10 @@ export const createEmployee = async (employee) => {
   return await axios.post(url, employee);
 };
 
-export const getEmployeeById= async (employeeId)=>{
-return await axios.get(url +'/'+ employeeId)
-}
+export const getEmployeeById = async (employeeId) => {
+  return await axios.get(url + employeeId);
+};
+
+export const UpdateEmployee = async (employee, employeeId) => {
+  return await axios.put(url + employeeId, employee);
+};

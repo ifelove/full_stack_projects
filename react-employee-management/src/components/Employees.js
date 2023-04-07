@@ -19,14 +19,14 @@ const Employees = () => {
     .then((res) => {
       const data = res.data;
       setEmpolyees(res.data.items);
-      console.log("this is new item", employees);
+     // console.log("this is new item", employees);
     })
     .catch((error) => console.log(error)); //.then((res)=>{console.log(res.data.items)})
   //console.log("hello")
   // console.log(employees);
 
   const addEmployee = () => {
-    console.log("Hello");
+    //console.log("Hello");
   };
 
   const editEmployee = (id) => {
@@ -54,7 +54,7 @@ const Employees = () => {
           <tbody>
             {employees.map((user) => {
               const { name, _id } = user;
-              console.log("the id" + _id);
+            //  console.log("the id" + _id);
               return (
                 <tr className="row" key={_id}>
                   <td className="tbtd">{name}</td>

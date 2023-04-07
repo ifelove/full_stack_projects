@@ -3,16 +3,17 @@ import React, { useContext } from "react";
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
- 
   const [firstname, setFirstname] = React.useState("");
   const [lastname, setLastname] = React.useState("");
   const [email, setEmail] = React.useState("");
+  const [singleEmployee, setSingleEmployee] = React.useState("");
   const [employees, setEmpolyees] = React.useState([]);
 
   return (
     <AppContext.Provider
       value={{
-    
+        singleEmployee,
+        setSingleEmployee,
         firstname,
         setFirstname,
         lastname,
