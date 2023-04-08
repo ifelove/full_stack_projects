@@ -23,28 +23,57 @@ const createEmployee = async (req, res) => {
 
 const getSingleEmployee = async (req, res) => {
   try {
-    //const employeeID = req.req.params.id;
+    //const employeeID = req.params.id;
     const { id: employeeID } = req.params;
     const employee = await Employee.findOne({ _id: employeeID });
 
     if (!employee) {
-      return res.status(404).json({msg:`No employee with id: ${employeeID}`});
+      return res
+        .status(404)
+        .json({ msg: `No employee with id: ${employeeID}` });
     }
 
     res.status(200).json({ employee });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({ msg: error });
   }
 };
 
-const updateSingleEmployee = (req, res) => {
-  console.log("updating a particular employee");
-  res.json("updating a particular employee");
+const updateSingleEmployee = async (req, res) => {
+  try {
+    const { id: employeeID } = req.params;
+    const employee = await Employee.findOneAndUpdate(
+      { _id: employeeID },
+      req.body,
+      { new: true, runValidators: true } //to return new update and to apply the validator
+    );
+    if (!employee) {
+      return res
+        .status(404)
+        .json({ msg: `No employee with id: ${employeeID}` });
+    }
+    res.status(200).json({ employee });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
-const deleteemployee = (req, res) => {
-  console.log("deleting a particular employee");
-  res.send("deleting a particular employee");
+const deleteemployee = async (req, res) => {
+  try {
+    const employeeID = req.params.id;
+    /**const { id: employeeID } = req.params;*/
+    const employee = await Employee.findOneAndDelete({ _id: employeeID });
+
+    if (!employee) {
+      return res
+        .status(404)
+        .json({ msg: `No employee with id: ${employeeID}` });
+    }
+
+    res.status(200).json("Employee deleted successfully");
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 module.exports = {

@@ -1,5 +1,7 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
+
 const port = 5000;
 const connectDB = require("./db/connectDB");
 require("dotenv").config();
@@ -13,6 +15,7 @@ const employees = require("./route/employee-route");
 // res.send("Hello wolrd");
 //});
 //middleware
+app.use(cors());
 app.use(express.json());
 
 //route
