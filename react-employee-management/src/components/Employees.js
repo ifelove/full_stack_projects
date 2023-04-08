@@ -7,19 +7,23 @@ import data from "../tempData";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useGlobalContex } from "../contex";
-import { getEmployees } from "../Service/EmployeeService";
+import { getEmployees, deleteEmployee } from "../Service/EmployeeService";
 
-const url = "http://localhost:4000/api/vi/items";
+//const url = "http://localhost:5000/api/vi/employees";
 
 const Employees = () => {
+  
+  
+  
   const navigate = useNavigate();
   const { employees, setEmpolyees, firstname, lastname } = useGlobalContex();
 
   getEmployees()
     .then((res) => {
       const data = res.data;
-      setEmpolyees(res.data.items);
-     // console.log("this is new item", employees);
+     // console.log(data.employees);
+      setEmpolyees(res.data.employees);
+      // console.log("this is new item", employees);
     })
     .catch((error) => console.log(error)); //.then((res)=>{console.log(res.data.items)})
   //console.log("hello")
@@ -31,6 +35,17 @@ const Employees = () => {
 
   const editEmployee = (id) => {
     navigate(`/update-employee/${id}`);
+  };
+
+  const deleteselected = (id) => {
+  
+    deleteEmployee(id)
+      .then(() => {
+        console.log("deleted successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -53,24 +68,25 @@ const Employees = () => {
           </thead>
           <tbody>
             {employees.map((user) => {
-              const { name, _id } = user;
-            //  console.log("the id" + _id);
+              const { firstname, lastname, email, _id } = user;
+              //  console.log("the id" + _id);
               return (
                 <tr className="row" key={_id}>
-                  <td className="tbtd">{name}</td>
-                  <td className="tbtd">{name}</td>
-                  <td className="tbtd">{name}</td>
+                  <td className="tbtd">{firstname}</td>
+                  <td className="tbtd">{lastname}</td>
+                  <td className="tbtd">{email}</td>
                   <td className="tbtd">
                     <section className="inlineBtn">
                       <button
                         className="btnEdit"
-                        onClick={() => editEmployee(_id)
-                        }
+                        onClick={() => editEmployee(_id)}
                       >
                         Update
                       </button>
                       <span>
-                        <button className="btnDelete">Delete</button>
+                        <button className="btnDelete" onClick={()=>deleteselected(_id)}>
+                          Delete
+                        </button>
                       </span>
                     </section>
                   </td>

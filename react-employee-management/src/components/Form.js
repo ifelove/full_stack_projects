@@ -1,10 +1,11 @@
 import React from "react";
 import { useGlobalContex } from "../contex";
-import { createEmployee } from "../Service/EmployeeService";
-import { BrowserRouter, Link, useNavigate } from "react-router-dom";
+import { createEmployee} from "../Service/EmployeeService";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import "../index.css";
 
 const Form = () => {
+ 
   const navigate = useNavigate();
   const { firstname, lastname, email, setFirstname, setLastname, setEmail } =
     useGlobalContex();
@@ -27,7 +28,7 @@ const Form = () => {
     //console.log(firstname);
     // console.log(lastname);
     // console.log(email);
-    let employee = { name: firstname }; //, lastname: lastname, email: email };
+    let employee = { firstname: firstname, lastname: lastname, email: email }; //, lastname: lastname, email: email };
     console.log("employee=>" + JSON.stringify(employee));
     createEmployee(employee).then((res) => {});
     setFirstname("");
@@ -43,6 +44,7 @@ const Form = () => {
     console.log("cancel");
   };
 
+ 
   return (
     <div className="main-card-body">
       <div className="formheading">

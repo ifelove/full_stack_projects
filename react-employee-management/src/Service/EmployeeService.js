@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "http://localhost:4000/api/vi/items/";
+//const url = "http://localhost:5000/api/vi/employees/";
 
 /**
 const getEmployees = async () => {
@@ -18,20 +18,33 @@ const getEmployees = async () => {
  */
 export const getEmployees = async () => {
   try {
-    return await axios.get(url, { headers: { Accept: "Application/json" } });
+    return await axios.get("http://localhost:5000/api/vi/employees/", {
+      headers: { Accept: "Application/json" },
+    });
   } catch (error) {
     console.log(error);
   }
 };
 
 export const createEmployee = async (employee) => {
-  return await axios.post(url, employee);
+  return await axios.post("http://localhost:5000/api/vi/employees/", employee);
 };
 
 export const getEmployeeById = async (employeeId) => {
-  return await axios.get(url + employeeId);
+  return await axios.get(
+    `http://localhost:5000/api/vi/employees/${employeeId}`
+  );
 };
 
-export const UpdateEmployee = async (employee, employeeId) => {
-  return await axios.put(url + employeeId, employee);
+export const UpdateEmployee = async (employeeId, employee) => {
+  return await axios.patch(
+    `http://localhost:5000/api/vi/employees/${employeeId}`,
+    employee
+  );
+};
+
+export const deleteEmployee = async (employeeId) => {
+  return await axios.delete(
+    `http://localhost:5000/api/vi/employees/${employeeId}`
+  );
 };

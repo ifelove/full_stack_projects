@@ -21,25 +21,26 @@ const UpdateEmployeeComponent = () => {
   React.useEffect(() => {
     getEmployeeById(empId.id).then((res) => {
       //console.log(res.data.item.name);
-      const employee = res.data.item;
-
-      const { name } = employee;
-      // console.log(name);
-      setSingleEmployee({ firstname: res.data.item.name });
-      setFirstname(name);
-
-      // console.log(singleEmployee);
-      // console.log(firstname);
-      // console.log("the firstname" + firstname);
-      // console.log("the employee" + res.data);
+      const employee = res.data.employee;
+      console.log(employee);
+      const { _id, firstname, lastname, email } = employee;
+      setSingleEmployee({ employee });
+      setFirstname(firstname);
+      setLastname(lastname);
+      setEmail(email);
     });
   }, [empId.id]);
 
-  const updateEmployee = () => {
-    console.log(empId.id);
-    let employee = { name: firstname }; //, lastname: lastname, email: email };
+  const updateEmployee = (e) => {
+    e.preventDefault();
+    //console.log(empId.id);
+
+    let employee = { firstname: firstname, lastname: lastname, email: email }; //, lastname: lastname, email: email };
+
     //  console.log("employee=>" + JSON.stringify(employee));
-    UpdateEmployee(empId.id, employee);
+    UpdateEmployee(empId.id, employee).catch((error) => {
+      console.log(error);
+    });
     // console.log(employee);
     setFirstname("");
     setLastname("");
@@ -97,7 +98,7 @@ const UpdateEmployeeComponent = () => {
               />
               <div className="formbtn">
                 <button className="saveBtn" onClick={updateEmployee}>
-                  Save
+                  Update
                 </button>
                 <span>
                   <button className="cancelBtn" onClick={cancelHandler}>
