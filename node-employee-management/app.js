@@ -6,9 +6,6 @@ const port = 5000;
 const connectDB = require("./db/connectDB");
 require("dotenv").config();
 
-const MONGO_URL =
-  "mongodb+srv://harwedarife:<password>@cluster0.v67iuzg.mongodb.net/EmployeeManagement?retryWrites=true&w=majority";
-
 const employees = require("./route/employee-route");
 
 //app.get("/", (req, res) => {
