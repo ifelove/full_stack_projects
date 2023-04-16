@@ -1,8 +1,8 @@
 import React from "react";
 
-const AppContext = (children = React.createContext());
+const AppContext = React.createContext();
 
-export const AppProvider = () => {
+export const AppProvider = ({ children }) => {
   const [bookLists, setBookLists] = React.useState([]);
   const [title, setTitle] = React.useState("");
   const [bookDesc, setBookDesc] = React.useState("");
@@ -21,13 +21,16 @@ export const AppProvider = () => {
   const [bestSellerRank, setBestSellerRank] = React.useState(10);
   const [publisher, setPublisher] = React.useState("");
   const [publishedDate, setPublishedDate] = React.useState("");
-  const [alert,setAlert]=React.useState({show:false,msg:"",status:""})
-  const [quoteIndex,setQuoteIndex]=React.useState(0)
-  const[quote,setQuote]=React.useState()
-
+  const [alert, setAlert] = React.useState({
+    show: false,
+    msg: "",
+    status: "",
+  });
+  const [quoteIndex, setQuoteIndex] = React.useState(0);
+  const [quote, setQuote] = React.useState();
 
   return (
-    <AppContext.Provider value={{ bookList, setBookList }}>
+    <AppContext.Provider value={{ bookLists, setBookLists }}>
       {children}
     </AppContext.Provider>
   );
