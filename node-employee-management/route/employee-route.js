@@ -9,10 +9,11 @@ const {
   deleteemployee,
 } = require("../controller/controller-employee");
 
+router.route("/").get(getAlltEmployees).post(createEmployee);
+router
+  .route("/:id")
+  .get(getSingleEmployee)
+  .patch(updateSingleEmployee)
+  .delete(deleteemployee);
 
-
-
-router.route('/').get(getAlltEmployees).post(createEmployee)
-router.route('/:id').get(getSingleEmployee).patch(updateSingleEmployee).delete(deleteemployee)
-
-module.exports=router
+module.exports = router;
