@@ -1,5 +1,6 @@
 export default [
   {
+    id: 1,
     title: "The Atlas Six",
     des: "About 2022 Goodreads Choice Award Nominee for Fantasy The Alexandrian Society, caretakers of lost knowledge from the greatest civilizations of antiquity, are the foremost secret society of magical academicians in the world. Those who earn a place among the Alexandrians will secure a life of wealth, power, and prestige beyond their wildest dreams, and each decade, only the six most uniquely talented magicians are selected to be considered for initiation. Enter the latest round of six: Libby Rhodes and Nico de Varona, unwilling halves of an unfathomable whole, who exert uncanny control over every element of physicality. Reina Mori, a naturalist, who can intuit the language of life itself. Parisa Kamali, a telepath who can traverse the depths of the subconscious, navigating worlds inside the human mind. Callum Nova, an empath easily mistaken for a manipulative illusionist, who can influence the intimate workings of a person's inner self. Finally, there is Tristan Caine, who can see through illusions to a new structure of reality--an ability so rare that neither he nor his peers can fully grasp its implications",
     price: 100,
@@ -17,6 +18,7 @@ export default [
     publishedDate: "",
   },
   {
+    id: 2,
     title: "Savage Legion",
     des: `They call them Savages. Brutal. Efficient. Expendable.
 
@@ -40,6 +42,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publishedDate: "",
   },
   {
+    id: 3,
     title: "Neuroplasticity ",
     des: `Fifty years ago, neuroscientists thought that a mature brain was fixed like a fly in amber, unable to change. Today, we know that our brains and nervous systems change throughout our lifetimes. This concept of neuroplasticity has captured the imagination of a public eager for self-improvement—and has inspired countless Internet entrepreneurs who peddle dubious “brain training” games and apps. In this book, Moheb Costandi offers a concise and engaging overview of neuroplasticity for the general reader, describing how our brains change continuously in response to our actions and experiences.`,
     price: 100,
@@ -57,6 +60,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publishedDate: "",
   },
   {
+    id: 4,
     title: "Body I Am",
     des: `How the way we perceive our bodies plays a critical role in the way we perceive ourselves: stories of phantom limbs, rubber hands, anorexia, and other phenomena.
 
@@ -76,6 +80,7 @@ The body is central to our sense of identity. It can be a canvas for self-expres
     publishedDate: "",
   },
   {
+    id: 5,
     title: "Savage Legion",
     des: `They call them Savages. Brutal. Efficient. Expendable.
 
@@ -99,6 +104,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publishedDate: "",
   },
   {
+    id: 6,
     title: "Neuroplasticity ",
     des: `Fifty years ago, neuroscientists thought that a mature brain was fixed like a fly in amber, unable to change. Today, we know that our brains and nervous systems change throughout our lifetimes. This concept of neuroplasticity has captured the imagination of a public eager for self-improvement—and has inspired countless Internet entrepreneurs who peddle dubious “brain training” games and apps. In this book, Moheb Costandi offers a concise and engaging overview of neuroplasticity for the general reader, describing how our brains change continuously in response to our actions and experiences.`,
     price: 100,
@@ -116,7 +122,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publishedDate: "",
   },
   /** 
-  {
+  {id:7,
     title: "Savage Legion",
     des: `They call them Savages. Brutal. Efficient. Expendable.
 
@@ -139,7 +145,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publisher: "",
     publishedDate: "",
   },
-  {
+  {id:8,
     title: "Neuroplasticity ",
     des: `Fifty years ago, neuroscientists thought that a mature brain was fixed like a fly in amber, unable to change. Today, we know that our brains and nervous systems change throughout our lifetimes. This concept of neuroplasticity has captured the imagination of a public eager for self-improvement—and has inspired countless Internet entrepreneurs who peddle dubious “brain training” games and apps. In this book, Moheb Costandi offers a concise and engaging overview of neuroplasticity for the general reader, describing how our brains change continuously in response to our actions and experiences.`,
     price: 100,
@@ -156,7 +162,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publisher: "",
     publishedDate: "",
   },
-  {
+  {id:9,
     title: "Savage Legion",
     des: `They call them Savages. Brutal. Efficient. Expendable.
 
@@ -179,7 +185,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publisher: "",
     publishedDate: "",
   },
-  {
+  {id:10,
     title: "Neuroplasticity ",
     des: `Fifty years ago, neuroscientists thought that a mature brain was fixed like a fly in amber, unable to change. Today, we know that our brains and nervous systems change throughout our lifetimes. This concept of neuroplasticity has captured the imagination of a public eager for self-improvement—and has inspired countless Internet entrepreneurs who peddle dubious “brain training” games and apps. In this book, Moheb Costandi offers a concise and engaging overview of neuroplasticity for the general reader, describing how our brains change continuously in response to our actions and experiences.`,
     price: 100,
@@ -196,7 +202,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publisher: "",
     publishedDate: "",
   },
-  {
+  {id:11
     title: "Savage Legion",
     des: `They call them Savages. Brutal. Efficient. Expendable.
 
@@ -219,7 +225,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publisher: "",
     publishedDate: "",
   },
-  {
+  {id:12,
     title: "Neuroplasticity ",
     des: `Fifty years ago, neuroscientists thought that a mature brain was fixed like a fly in amber, unable to change. Today, we know that our brains and nervous systems change throughout our lifetimes. This concept of neuroplasticity has captured the imagination of a public eager for self-improvement—and has inspired countless Internet entrepreneurs who peddle dubious “brain training” games and apps. In this book, Moheb Costandi offers a concise and engaging overview of neuroplasticity for the general reader, describing how our brains change continuously in response to our actions and experiences.`,
     price: 100,
@@ -236,7 +242,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publisher: "",
     publishedDate: "",
   },
-  {
+  {id:13
     title: "Savage Legion",
     des: `They call them Savages. Brutal. Efficient. Expendable.
 
@@ -259,7 +265,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publisher: "",
     publishedDate: "",
   },
-  {
+  {id:14
     title: "Neuroplasticity ",
     des: `Fifty years ago, neuroscientists thought that a mature brain was fixed like a fly in amber, unable to change. Today, we know that our brains and nervous systems change throughout our lifetimes. This concept of neuroplasticity has captured the imagination of a public eager for self-improvement—and has inspired countless Internet entrepreneurs who peddle dubious “brain training” games and apps. In this book, Moheb Costandi offers a concise and engaging overview of neuroplasticity for the general reader, describing how our brains change continuously in response to our actions and experiences.`,
     price: 100,
@@ -276,7 +282,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publisher: "",
     publishedDate: "",
   },
-  {
+  {id:15
     title: "Savage Legion",
     des: `They call them Savages. Brutal. Efficient. Expendable.
 
