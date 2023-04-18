@@ -4,7 +4,9 @@ export const Navbar = () => {
   return (
     <nav>
       <div className="design">
-        logo
+        <span className="logo">
+          🕮
+        </span>
         <span>
           <h1>Book Shop</h1>
         </span>

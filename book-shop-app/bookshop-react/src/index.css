@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(33, 33, 36);
 }
 
 code {
@@ -16,6 +17,10 @@ code {
 li {
   list-style: none;
 }
+.logo {
+  font-size: 54px;
+}
+
 nav {
   display: flex;
 
@@ -26,19 +31,59 @@ nav {
   background-color: rgb(46, 46, 54);
   color: white;
 }
-.design{margin-left: 5%;display: flex;cursor: pointer;}
-nav ul{display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-gap:60;
-font-size: 18px;
-font-weight: light;
-padding: 20px;
-margin:20px;
-width:600px ;
+.design {
+  margin-left: 5%;
+  display: flex;
+  cursor: pointer;
+}
+nav ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60;
+  font-size: 18px;
+  font-weight: light;
+  padding: 20px;
+  margin: 20px;
+  width: 600px;
 }
 
-.li-class{border: 1px solid red;padding: 10px;
-text-align: center;
-cursor: pointer;}
+.li-class {
+  border: 1px solid red;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
 
-/* ..................................NavBar..............................................................................*/
+/* ..................................End of NavBar..............................................................................*/
+
+/* ..................................Home..............................................................................*/
+
+.main-container {
+  width: 100%;
+  min-height: 600px;
+  background-color: aquamarine;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  gap: 0;
+}
+.container {
+  background-color: aliceblue;
+  width: 100%;
+  margin: 20px 20px;
+}
+
+.book-list-design {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+.book-list-logo {
+  font-size: 22px;
+}
+/* ..................................End of Home.............................................................................*/
+/* ..................................ShowBook.............................................................................*/
+.book-display {
+  background-color: rgb(180, 160, 160);
+  width: 90%;
+  margin: 20px 20px;
+} /* ..................................End of ShowBook.............................................................................*/
