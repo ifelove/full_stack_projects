@@ -6,12 +6,29 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(33, 33, 36);
+  color: #d1c9c9;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* ..................................Home..............................................................................*/
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  width: 50%;
+  background-color: rgb(39, 39, 46);
+  height: 300px;
+  margin: 40px 400px;
+  padding-left: 20px;
+}
+.quotes-container{display: flex;
+flex-direction: column;}
+/* ..................................End of Home..............................................................................*/
 
 /* ..................................NavBar..............................................................................*/
 li {
@@ -56,8 +73,7 @@ nav ul {
 
 /* ..................................End of NavBar..............................................................................*/
 
-/* ..................................Home..............................................................................*/
-
+/* ..................................BookList..............................................................................*/
 
 .main-container {
   width: 100%;
@@ -81,6 +97,23 @@ nav ul {
 .book-list-logo {
   font-size: 22px;
 }
+
+.btnEdit,
+.btnDelete {
+  outline: none;
+
+  padding: 5px;
+  margin: 1px;
+  border: none;
+  cursor: pointer;
+}
+.btnEdit {
+  background-color: rgb(5, 116, 20);
+}
+.btnDelete {
+  background-color: rgb(148, 6, 6);
+}
+
 /* ..................................End of Home.............................................................................*/
 /* ..................................ShowBook.............................................................................*/
 .book-display {

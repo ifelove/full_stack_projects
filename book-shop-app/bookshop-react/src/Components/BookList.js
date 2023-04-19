@@ -26,6 +26,7 @@ export const BookList = () => {
                 <th>ISBN Number</th>
                 <th>Language</th>
                 <th>Category</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -40,17 +41,20 @@ export const BookList = () => {
                     <td>{ISBN}</td>
                     <td>{language}</td>
                     <td>{category}</td>
+                    <td>
+                      <section className="inlineBtn">
+                        <button className="btnEdit">Update</button>
+                        <span>
+                          <button className="btnDelete">Delete</button>
+                        </span>
+                      </section>
+                    </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
 
-          {/**
-           * 
-           * //................Pagination here..............................................................//
-           * 
-           * 
 <ReactPaginate
             previousLabel={"Previous"}
             nextLabel={"Next"}
@@ -75,7 +79,7 @@ export const BookList = () => {
 
 
 
-           */}
+         
         </section>
       </main>
       <section className="book-display">

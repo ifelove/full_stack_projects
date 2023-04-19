@@ -6,8 +6,11 @@ import "./App.css";
 function App() {
   return (
     <div>
-    <Navbar />
+      <Navbar />
+      <Home />
+      {/** 
       <BookList/>
+      */}
     </div>
   );
 }
