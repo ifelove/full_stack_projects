@@ -5,7 +5,7 @@ import books from "../books";
 
 export const BookList = () => {
   const handlePageChange = (data) => {
-    console.log(data.selected);
+   // console.log(data.selected);
   };
   return (
     <main className="main-container">

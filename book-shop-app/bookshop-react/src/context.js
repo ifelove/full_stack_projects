@@ -20,17 +20,42 @@ export const AppProvider = ({ children }) => {
   const [freeshiping, setFreeShiping] = React.useState(false);
   const [bestSellerRank, setBestSellerRank] = React.useState(10);
   const [publisher, setPublisher] = React.useState("");
+  const [url, setUrl] = React.useState("");
   const [publishedDate, setPublishedDate] = React.useState("");
+  const [isAlert, setIsAlert] = React.useState("");
   const [alert, setAlert] = React.useState({
     show: false,
-    msg: "",
-    status: "",
+    msg: "Book updated succesfully",
+    status: "success",
   });
-  const [quoteIndex, setQuoteIndex] = React.useState(0);
-  const [quote, setQuote] = React.useState();
 
   return (
-    <AppContext.Provider value={{ bookLists, setBookLists }}>
+    <AppContext.Provider
+      value={{
+        bookLists,
+        setBookLists,
+        title,
+        setTitle,
+        bookDesc,
+        setBookDesc,
+        price,
+        setPrice,
+        author,
+        setAuthor,
+        isbnNumber,
+        setIsbnNumber,
+        language,
+        setLanguage,
+        category,
+        setCategory,
+        alert,
+        setAlert,
+        url,
+        setUrl,
+        isAlert,
+        setIsAlert,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

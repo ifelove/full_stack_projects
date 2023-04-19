@@ -26,8 +26,10 @@ code {
   margin: 40px 400px;
   padding-left: 20px;
 }
-.quotes-container{display: flex;
-flex-direction: column;}
+.quotes-container {
+  display: flex;
+  flex-direction: column;
+}
 /* ..................................End of Home..............................................................................*/
 
 /* ..................................NavBar..............................................................................*/
@@ -121,3 +123,76 @@ nav ul {
   width: 90%;
   margin: 20px 20px;
 } /* ..................................End of ShowBook.............................................................................*/
+
+/* ..................................AddBook..............................................................................*/
+.headline {
+  margin: 10px 40px;
+}
+
+.add-book {
+  display: grid;
+  width: 90%;
+  height: 600px;
+  background: black;
+  margin: 5% 5%;
+}
+.main input {
+  width: 550px;
+  outline: none;
+  height: 40px;
+}
+main input {
+  width: 400px;
+  outline: none;
+  height: 40px;
+}
+
+select {
+  outline: none;
+  height: 30px;
+}
+section main {
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.btn-section {
+  translate: 40% 20%;
+}
+.btn-section button {
+  margin: 10px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  outline: none;
+}
+/* ..................................End of Addbook..............................................................................*/
+
+/* ..................................Alert..............................................................................*/
+
+.alert-danger {
+  background: rgb(165, 14, 14);
+}
+
+.alert {
+  width: 300px;
+  height: 150px;
+  right: -50%;
+  top: 50px;
+  color: white;
+  border-radius: 4px;
+}
+.alert-success {
+  background: rgb(24, 156, 68);
+  
+}
+/* ..................................End of Alert..............................................................................*/
