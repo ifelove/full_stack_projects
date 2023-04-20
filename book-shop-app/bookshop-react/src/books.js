@@ -19,7 +19,7 @@ export default [
   },
   {
     id: 2,
-    title: "Savage Legion",
+    title: "Savage Legion 1",
     des: `They call them Savages. Brutal. Efficient. Expendable.
 
 The empire relies on them. The Savages are the greatest weapon they ever developed. Culled from the streets of their cities, they take the ones no one will miss and throw them, by the thousands, at the empire’s enemies. If they live, they fight again. If they die, there are always more to take their place.
@@ -81,7 +81,7 @@ The body is central to our sense of identity. It can be a canvas for self-expres
   },
   {
     id: 5,
-    title: "Savage Legion",
+    title: "Savage Legion 2",
     des: `They call them Savages. Brutal. Efficient. Expendable.
 
 The empire relies on them. The Savages are the greatest weapon they ever developed. Culled from the streets of their cities, they take the ones no one will miss and throw them, by the thousands, at the empire’s enemies. If they live, they fight again. If they die, there are always more to take their place.
@@ -105,7 +105,7 @@ But to find him, she must become one of them, to be marked in her blood, to figh
   },
   {
     id: 6,
-    title: "Neuroplasticity ",
+    title: "Neuroplasticity 2",
     des: `Fifty years ago, neuroscientists thought that a mature brain was fixed like a fly in amber, unable to change. Today, we know that our brains and nervous systems change throughout our lifetimes. This concept of neuroplasticity has captured the imagination of a public eager for self-improvement—and has inspired countless Internet entrepreneurs who peddle dubious “brain training” games and apps. In this book, Moheb Costandi offers a concise and engaging overview of neuroplasticity for the general reader, describing how our brains change continuously in response to our actions and experiences.`,
     price: 340,
     ISBN: "ACB34007",

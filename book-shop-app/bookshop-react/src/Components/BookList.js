@@ -1,11 +1,27 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
 import { ShowBook } from "./ShowBook";
-import books from "../books";
-
+import { useGlobalContext } from "../context";
 export const BookList = () => {
+  const {
+    bookLists,
+    setBooList,
+    displayCoverUrl,
+    setDisplayCoverUrl,
+    displayCoverTitle,
+    setDisplayCoverTitle,
+  } = useGlobalContext();
   const handlePageChange = (data) => {
-   // console.log(data.selected);
+    // console.log(data.selected);
+  };
+  const displayBook = (e) => {
+    const title = e.target.textContent;
+    const display = bookLists.filter((item) => title === item.title);
+    display.map((item) => {
+      const { url, title } = item;
+      setDisplayCoverUrl(url);
+      setDisplayCoverTitle(title);
+    });
   };
   return (
     <main className="main-container">
@@ -30,12 +46,12 @@ export const BookList = () => {
               </tr>
             </thead>
             <tbody>
-              {books.map((item) => {
+              {bookLists.map((item) => {
                 const { id, title, author, ISBN, language, category, price } =
                   item;
                 return (
                   <tr key={id}>
-                    <td>{title}</td>
+                    <td onMouseOver={displayBook}>{title}</td>
                     <td>{`${author.firstname}  ${author.lastname}`}</td>
                     <td>{price}</td>
                     <td>{ISBN}</td>
@@ -55,7 +71,7 @@ export const BookList = () => {
             </tbody>
           </table>
 
-<ReactPaginate
+          <ReactPaginate
             previousLabel={"Previous"}
             nextLabel={"Next"}
             breakLabel={"..."}
@@ -73,13 +89,8 @@ export const BookList = () => {
             nextLinkClassName={"page-link"}
             breakClassName={"page-item"}
             breakLinkClassName={"page-link"}
-            activeClassName={'active'}
+            activeClassName={"active"}
           />
-
-
-
-
-         
         </section>
       </main>
       <section className="book-display">

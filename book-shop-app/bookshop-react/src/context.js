@@ -1,10 +1,12 @@
 import React from "react";
+import books from "./books";
 
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
-  const [bookLists, setBookLists] = React.useState([]);
-  const [title, setTitle] = React.useState("");
+  const [bookLists, setBookLists] = React.useState(books);
+  const [bookIndex, setBookIndex] = React.useState(1);
+  const [title, setTitle] = React.useState("mmmmmmmmm");
   const [bookDesc, setBookDesc] = React.useState("");
   const [price, setPrice] = React.useState("");
   const [author, setAuthor] = React.useState({
@@ -14,17 +16,19 @@ export const AppProvider = ({ children }) => {
     about: "",
     nationality: "",
   });
+  const [displayCoverUrl,setDisplayCoverUrl]=React.useState('')
+   const [displayCoverTitle, setDisplayCoverTitle] = React.useState("");
   const [isbnNumber, setIsbnNumber] = React.useState("");
   const [language, setLanguage] = React.useState("");
   const [category, setCategory] = React.useState("");
   const [freeshiping, setFreeShiping] = React.useState(false);
   const [bestSellerRank, setBestSellerRank] = React.useState(10);
   const [publisher, setPublisher] = React.useState("");
-  const [url, setUrl] = React.useState("");
+  const [url, setUrl] = React.useState("nnnnnnnnnnn");
   const [publishedDate, setPublishedDate] = React.useState("");
   const [isAlert, setIsAlert] = React.useState("");
   const [alert, setAlert] = React.useState({
-    show: false,
+    show: true,
     msg: "Book updated succesfully",
     status: "success",
   });
@@ -54,6 +58,12 @@ export const AppProvider = ({ children }) => {
         setUrl,
         isAlert,
         setIsAlert,
+        bookIndex,
+        setBookIndex,
+        displayCoverUrl,
+        setDisplayCoverUrl,
+        displayCoverTitle,
+        setDisplayCoverTitle,
       }}
     >
       {children}

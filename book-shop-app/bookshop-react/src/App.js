@@ -4,19 +4,21 @@ import { BookList } from "./Components/BookList";
 import Addbook from "./Components/Addbook";
 import Alert from "./Components/Alert";
 import "./App.css";
+import { useGlobalContext } from "./context";
 
 function App() {
+  const { alert, setAlert } = useGlobalContext();
+  const { show } = alert;
   return (
     <div>
       <Navbar />
-      <div>
-        <Alert />
-      </div>
 
+      <Alert />
+      <BookList />
       {/** 
        *   <Addbook />
        *  <Home />
-       * <BookList />
+       * x
      
       */}
     </div>
