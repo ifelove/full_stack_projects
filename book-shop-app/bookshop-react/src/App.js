@@ -3,6 +3,7 @@ import { Home } from "./Components/Home";
 import { BookList } from "./Components/BookList";
 import Addbook from "./Components/Addbook";
 import Alert from "./Components/Alert";
+import FilterComponent from "./Components/FilterComponent";
 import "./App.css";
 import { useGlobalContext } from "./context";
 
@@ -12,13 +13,16 @@ function App() {
   return (
     <div>
       <Navbar />
-
-      <Alert />
+      <FilterComponent />
       <BookList />
       {/** 
-       *   <Addbook />
+       *
+       *  
+       *  
+       * <Alert />
+       * <Addbook />  
        *  <Home />
-       * x
+       * 
      
       */}
     </div>

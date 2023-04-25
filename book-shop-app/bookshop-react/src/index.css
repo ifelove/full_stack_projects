@@ -116,17 +116,25 @@ nav ul {
   background-color: rgb(148, 6, 6);
 }
 
+.drop-icon {
+  margin-left: 10px;
+}
+
 /* ..................................End of Home.............................................................................*/
 /* ..................................ShowBook.............................................................................*/
 .book-display {
   background-color: rgb(180, 160, 160);
   width: 90%;
   margin: 20px 20px;
-  
-} 
-.show-book-heading{ margin: 20px 40px;
-color:white;font-size: small;}
-.search-box{width: 200px;}
+}
+.show-book-heading {
+  margin: 20px 40px;
+  color: white;
+  font-size: small;
+}
+.search-box {
+  width: 200px;
+}
 
 /* ..................................End of ShowBook.............................................................................*/
 
@@ -200,10 +208,49 @@ section main {
 }
 .alert-success {
   background: rgb(24, 156, 68);
-  
 }
 
 /* ..................................End of Alert..............................................................................*/
-/* ..................................Sh..............................................................................*/
+/* ..................................Filter Component..............................................................................*/
+.filter-container {
+  background-color: #db1111;
+  width: 250px;
+  height: 400px;
+  position: absolute;
+  margin: 100px 40px;
+  display:none;
+}
 
-/* ..................................End of Alert..............................................................................*/
+.filter-container.show {display: block;}
+.sort-section,
+.filter-section {
+  padding: 20px 20px;
+}
+.sort {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.filter-search {
+  width: 200px;
+  margin: 0;
+  padding: 0;
+  height: 30px;
+}
+.filter-main {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.filter-section {
+  background-color: black;
+}
+.checkbox {
+  margin-right: 10px;
+}
+.checkbox-section {
+  margin-top: 20px;
+  overflow: scroll;
+  max-height: 180px;
+  min-height: 100px;
+}
+/* ..................................End of FilterComponent..............................................................................*/

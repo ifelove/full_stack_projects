@@ -6,16 +6,14 @@ const AppContext = React.createContext();
 export const AppProvider = ({ children }) => {
   const [bookLists, setBookLists] = React.useState(books);
   const [bookIndex, setBookIndex] = React.useState(1);
+  const[sectionToFilter,setSectionToFilter]=React.useState('')
+  const [filterLocation,setFilterLocation]=React.useState({})
+  const [filterableItems,setFilterableItems]=React.useState([])
+  const[isFilterOpen,setIsFilterOpen]=React.useState(false)
   const [title, setTitle] = React.useState("mmmmmmmmm");
   const [bookDesc, setBookDesc] = React.useState("");
   const [price, setPrice] = React.useState("");
-  const [author, setAuthor] = React.useState({
-    firstname: "",
-    lastname: "",
-    age: "",
-    about: "",
-    nationality: "",
-  });
+  const [author, setAuthor] = React.useState('');
   const [displayCoverUrl,setDisplayCoverUrl]=React.useState('')
    const [displayCoverTitle, setDisplayCoverTitle] = React.useState("");
   const [isbnNumber, setIsbnNumber] = React.useState("");
@@ -64,6 +62,14 @@ export const AppProvider = ({ children }) => {
         setDisplayCoverUrl,
         displayCoverTitle,
         setDisplayCoverTitle,
+        sectionToFilter,
+        setSectionToFilter,
+        filterableItems,
+        setFilterableItems,
+        filterLocation,
+        setFilterLocation,
+        isFilterOpen,
+        setIsFilterOpen,
       }}
     >
       {children}

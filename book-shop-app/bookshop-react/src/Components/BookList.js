@@ -2,6 +2,7 @@ import React from "react";
 import ReactPaginate from "react-paginate";
 import { ShowBook } from "./ShowBook";
 import { useGlobalContext } from "../context";
+import { BsArrowDownSquare } from "react-icons/bs";
 export const BookList = () => {
   const {
     bookLists,
@@ -10,15 +11,56 @@ export const BookList = () => {
     setDisplayCoverUrl,
     displayCoverTitle,
     setDisplayCoverTitle,
+    sectionToFilter,
+    setSectionToFilter,
+    filterableItems,
+    setFilterableItems,
+    filterLocation,
+    setFilterLocation,
+    isFilterOpen,
+    setIsFilterOpen,
   } = useGlobalContext();
-  const handlePageChange = (data) => {
-    // console.log(data.selected);
+
+  React.useEffect(() => {}, [filterableItems]);
+
+  const changeLocation = (e) => {
+    const section =
+      e.target.parentElement.parentElement.textContent.toLowerCase();
+    console.log(section);
+    const temp = e.target.getBoundingClientRect();
+
+    const { left, right, bottom } = temp;
+    const center = (left + right) / 2;
+    console.log(center);
+    console.log(bottom);
+    setFilterLocation({ center, bottom });
+    //setIsFilterOpen(false);
+    //  setSectionToFilter(section);
+    //displayfilter(section);
+    // console.log(filterableItems);
   };
+
+  //get item to display in the filter container
+  const displayfilter = async (text) => {
+    const output = [];
+    await bookLists.forEach((item) => {
+      output.push(item[text]);
+    });
+    //setFilterableItems(output);
+    await setFilterableItems(output);
+    setIsFilterOpen(!isFilterOpen);
+  };
+
+  const handlePageChange = (data) => {
+    console.log(data.selected);
+  };
+
   const displayBook = (e) => {
     const title = e.target.textContent;
     const display = bookLists.filter((item) => title === item.title);
     display.map((item) => {
       const { url, title } = item;
+
       setDisplayCoverUrl(url);
       setDisplayCoverTitle(title);
     });
@@ -36,12 +78,52 @@ export const BookList = () => {
           <table className="table">
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Price</th>
-                <th>ISBN Number</th>
-                <th>Language</th>
-                <th>Category</th>
+                <th onClick={changeLocation}>
+                  Title{" "}
+                  <span
+                    className="drop-icon"
+                    onClick={() => displayfilter("title")}
+                  >
+                    <BsArrowDownSquare />
+                  </span>
+                </th>
+                <th onMouseOver={changeLocation}>
+                  Author{" "}
+                  <span
+                    className="drop-icon"
+                    onClick={() => displayfilter("author")}
+                  >
+                    <BsArrowDownSquare />{" "}
+                  </span>
+                </th>
+                <th onMouseOver={changeLocation}>
+                  Price{" "}
+                  <span
+                    className="drop-icon"
+                    onClick={() => displayfilter("price")}
+                  >
+                    <BsArrowDownSquare />{" "}
+                  </span>
+                </th>
+                <th>ISBN</th>
+                <th onMouseOver={changeLocation}>
+                  Language
+                  <span
+                    className="drop-icon"
+                    onClick={() => displayfilter("language")}
+                  >
+                    <BsArrowDownSquare />{" "}
+                  </span>
+                </th>
+                <th onMouseOver={changeLocation}>
+                  Category
+                  <span
+                    className="drop-icon"
+                    onClick={() => displayfilter("category")}
+                  >
+                    <BsArrowDownSquare />{" "}
+                  </span>
+                </th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -52,7 +134,7 @@ export const BookList = () => {
                 return (
                   <tr key={id}>
                     <td onMouseOver={displayBook}>{title}</td>
-                    <td>{`${author.firstname}  ${author.lastname}`}</td>
+                    <td>{author}</td>
                     <td>{price}</td>
                     <td>{ISBN}</td>
                     <td>{language}</td>
