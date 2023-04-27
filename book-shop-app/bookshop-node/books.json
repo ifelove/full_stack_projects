@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "The Atlas Six",
+    "price": 100,
+    "ISBN": "ERF23482",
+    "author": "Adeola Ade",
+    "language": "English",
+    "category": "kids",
+    "url": "https://bookoutlet.ca/_next/image?url=https%3A%2F%2Fimages.bookoutlet.com%2Fcovers%2Flarge%2Fisbn978125%2F9781250854513-l.jpg&w=640&q=75"
+  },
+  {
+    "id": 1,
+    "title": "The Atlas Six",
+
+    "price": 100,
+    "ISBN": "ERF23482",
+    "author": "Adeola Ade",
+    "language": "English",
+    "category": "kids",
+    "url": "https://bookoutlet.ca/_next/image?url=https%3A%2F%2Fimages.bookoutlet.com%2Fcovers%2Flarge%2Fisbn978125%2F9781250854513-l.jpg&w=640&q=75"
+  },
+
+  {
+    "id": 2,
+    "title": "Savage Legion 1",
+    "price": 250,
+    "ISBN": "ASA21356",
+    "author": "bola",
+    "language": "French",
+    "category": "kids",
+    "url": "https://bookoutlet.ca/_next/image?url=https%3A%2F%2Fimages.bookoutlet.com%2Fcovers%2Flarge%2Fisbn978153%2F9781534439207-l.jpg&w=640&q=75"
+  },
+  {
+    "id": 3,
+    "title": "Neuroplasticity ",
+    "price": 150,
+    " ISBN": "WQW100932",
+    "author": "seun",
+    "language": "English",
+    "category": "Romance",
+    "url": "https://m.media-amazon.com/images/I/31SMQ5vAB6L.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Body I Am",
+    "price": 300,
+    "ISBN": "MNN76780",
+    "author": "new name",
+    "language": "English",
+    "category": "kids",
+    "url": "https://m.media-amazon.com/images/I/61J6ecCqFjL._AC_CR0%2C0%2C0%2C0_SX480_SY360_.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Savage Legion 2",
+    "price": 100,
+    "ISBN": "KLK09844",
+    "author": "wale",
+    "language": "French",
+    "category": "Fiction",
+    "url": "https://bookoutlet.ca/_next/image?url=https%3A%2F%2Fimages.bookoutlet.com%2Fcovers%2Flarge%2Fisbn978153%2F9781534439207-l.jpg&w=640&q=75"
+  },
+  {
+    "id": 6,
+    "title": "Neuroplasticity 2",
+    "price": 340,
+    "ISBN": "ACB34007",
+    "author": "moheeb",
+    "language": "English",
+    "category": "Science",
+    "image": "https://m.media-amazon.com/images/I/31SMQ5vAB6L.jpg"
+  }
+]
