@@ -13,8 +13,8 @@ export const ShowBook = () => {
     setDisplayCoverTitle,
   } = useGlobalContext();
 
-  const bookToDisplay = bookLists[bookIndex];
-  const { title, url } = bookToDisplay;
+  // const bookToDisplay = bookLists[bookIndex];
+  // const { title, url } = bookToDisplay;
   const coverUrl = displayCoverUrl;
   const coverTitle = displayCoverTitle;
 

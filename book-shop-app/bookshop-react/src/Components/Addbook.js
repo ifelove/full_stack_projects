@@ -47,18 +47,18 @@ const Addbook = () => {
           </main>
           <main>
             <label htmlFor="title">Language</label>
-            <select name="" id="">
+            <select name="langauage" id="">
               <option value="">Select Language</option>
-              <option value="">English</option>
-              <option value="">French</option>
+              <option value="english">English</option>
+              <option value="french">French</option>
             </select>
           </main>
           <main>
             <label htmlFor="title">Category</label>
-            <select name="" id="">
+            <select name="category" id="">
               <option value="">Select Category</option>
-              <option value="">Romance</option>
-              <option value="">Science</option>
+              <option value="ronance">Romance</option>
+              <option value="science">Science</option>
             </select>
           </main>
         </section>

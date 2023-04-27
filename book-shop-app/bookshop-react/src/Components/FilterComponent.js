@@ -47,7 +47,7 @@ const FilterComponent = () => {
               return (
                 <div key={index}>
                   <label htmlFor="">
-                    <input type="checkbox" className="checkbox" />
+                    <input type="checkbox" name="filtered" className="checkbox" checked='false' />
                     {item}
                   </label>
                 </div>

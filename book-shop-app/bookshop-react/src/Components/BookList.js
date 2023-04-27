@@ -3,10 +3,11 @@ import ReactPaginate from "react-paginate";
 import { ShowBook } from "./ShowBook";
 import { useGlobalContext } from "../context";
 import { BsArrowDownSquare } from "react-icons/bs";
+import { getAllBooks } from "../Services/service";
 export const BookList = () => {
   const {
     bookLists,
-    setBooList,
+    setBookLists,
     displayCoverUrl,
     setDisplayCoverUrl,
     displayCoverTitle,
@@ -21,7 +22,15 @@ export const BookList = () => {
     setIsFilterOpen,
   } = useGlobalContext();
 
-  React.useEffect(() => {}, [filterableItems]);
+  React.useEffect(() => {
+    getAllBooks().then((res) => {
+      const bookFromServer=res.data.books
+      setBookLists(bookFromServer)
+        ;
+    });
+  }, [bookLists]);
+
+  
 
   const changeLocation = (e) => {
     const section =
@@ -56,14 +65,17 @@ export const BookList = () => {
   };
 
   const displayBook = (e) => {
-    const title = e.target.textContent;
-    const display = bookLists.filter((item) => title === item.title);
-    display.map((item) => {
-      const { url, title } = item;
+    const text = e.target.textContent;
+    console.log(text)
+    const display = bookLists.find((item) => text === item.title);
+    //console.log(display);
+   // display.map((item) => {
+      const { url, title } =display //item;
+     console.log(url);
 
       setDisplayCoverUrl(url);
       setDisplayCoverTitle(title);
-    });
+   // });
   };
   return (
     <main className="main-container">
@@ -129,10 +141,10 @@ export const BookList = () => {
             </thead>
             <tbody>
               {bookLists.map((item) => {
-                const { id, title, author, ISBN, language, category, price } =
+                const { _id, title, author, ISBN, language, category, price } =
                   item;
                 return (
-                  <tr key={id}>
+                  <tr key={_id}>
                     <td onMouseOver={displayBook}>{title}</td>
                     <td>{author}</td>
                     <td>{price}</td>
@@ -176,7 +188,7 @@ export const BookList = () => {
         </section>
       </main>
       <section className="book-display">
-        <ShowBook />
+        <ShowBook />  
       </section>
     </main>
   );

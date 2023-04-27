@@ -4,7 +4,7 @@ import books from "./books";
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
-  const [bookLists, setBookLists] = React.useState(books);
+  const [bookLists, setBookLists] = React.useState([]);
   const [bookIndex, setBookIndex] = React.useState(1);
   const[sectionToFilter,setSectionToFilter]=React.useState('')
   const [filterLocation,setFilterLocation]=React.useState({})

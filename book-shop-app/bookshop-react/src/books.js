@@ -12,8 +12,9 @@ export default [
     publisher: "",
     publishedDate: "",
   },
+
   {
-    id: 1,
+    id: 2,
     title: "The Atlas Six",
     des: "About 2022 Goodreads Choice Award Nominee for Fantasy The Alexandrian Society, caretakers of lost knowledge from the greatest civilizations of antiquity, are the foremost secret society of magical academicians in the world. Those who earn a place among the Alexandrians will secure a life of wealth, power, and prestige beyond their wildest dreams, and each decade, only the six most uniquely talented magicians are selected to be considered for initiation. Enter the latest round of six: Libby Rhodes and Nico de Varona, unwilling halves of an unfathomable whole, who exert uncanny control over every element of physicality. Reina Mori, a naturalist, who can intuit the language of life itself. Parisa Kamali, a telepath who can traverse the depths of the subconscious, navigating worlds inside the human mind. Callum Nova, an empath easily mistaken for a manipulative illusionist, who can influence the intimate workings of a person's inner self. Finally, there is Tristan Caine, who can see through illusions to a new structure of reality--an ability so rare that neither he nor his peers can fully grasp its implications",
     price: 100,
@@ -25,7 +26,8 @@ export default [
     publisher: "",
     publishedDate: "",
   },
-
+];
+/** 
   {
     id: 2,
     title: "Savage Legion 1",
@@ -286,3 +288,4 @@ But to find him, she must become one of them, to be marked in her blood, to figh
     publishedDate: "",
   },
 ];
+*/

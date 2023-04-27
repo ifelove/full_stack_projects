@@ -12,15 +12,15 @@ function App() {
   const { show } = alert;
   return (
     <div>
-      <Navbar />
-      <FilterComponent />
       <BookList />
       {/** 
-       *
-       *  
+       *  <Addbook />
+       *<FilterComponent />
+     
+       *   <Navbar />
        *  
        * <Alert />
-       * <Addbook />  
+       * 
        *  <Home />
        * 
      
