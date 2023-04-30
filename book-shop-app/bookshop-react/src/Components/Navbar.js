@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 
 export const Navbar = () => {
+ const  navigate=useNavigate()
   return (
     <nav>
       <div className="design">
@@ -10,9 +12,15 @@ export const Navbar = () => {
         </span>
       </div>
       <ul>
-        <li className="li-class">Home</li>
-        <li className="li-class">Book List</li>
-        <li className="li-class">Add Book</li>
+        <NavLink to="/">
+          <li className="li-class">Home</li>
+        </NavLink>
+        <NavLink to="/booklist">
+          <li className="li-class">Book List</li>
+        </NavLink>
+        <NavLink to="/addbook">
+          <li className="li-class">Add Book</li>
+        </NavLink>
       </ul>
     </nav>
   );

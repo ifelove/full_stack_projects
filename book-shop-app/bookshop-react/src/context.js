@@ -1,29 +1,27 @@
 import React from "react";
-import books from "./books";
+import book from "./books";
 
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
-  const [bookLists, setBookLists] = React.useState([]);
+  const [books, setBooks] = React.useState([]);
   const [bookIndex, setBookIndex] = React.useState(1);
-  const[sectionToFilter,setSectionToFilter]=React.useState('')
-  const [filterLocation,setFilterLocation]=React.useState({})
-  const [filterableItems,setFilterableItems]=React.useState([])
-  const[isFilterOpen,setIsFilterOpen]=React.useState(false)
-  const [title, setTitle] = React.useState("mmmmmmmmm");
+  const [sectionToFilter, setSectionToFilter] = React.useState("");
+  const [filterLocation, setFilterLocation] = React.useState({});
+  const [filterableItems, setFilterableItems] = React.useState([]);
+  const [isFilterOpen, setIsFilterOpen] = React.useState(false);
+  const [title, setTitle] = React.useState("");
   const [bookDesc, setBookDesc] = React.useState("");
   const [price, setPrice] = React.useState("");
-  const [author, setAuthor] = React.useState('');
-  const [displayCoverUrl,setDisplayCoverUrl]=React.useState('')
-   const [displayCoverTitle, setDisplayCoverTitle] = React.useState("");
-  const [isbnNumber, setIsbnNumber] = React.useState("");
+  const [author, setAuthor] = React.useState("");
+  const [displayCoverUrl, setDisplayCoverUrl] = React.useState("");
+  const [displayCoverTitle, setDisplayCoverTitle] = React.useState("");
+  const [ISBN, setISBN] = React.useState("");
   const [language, setLanguage] = React.useState("");
   const [category, setCategory] = React.useState("");
-  const [freeshiping, setFreeShiping] = React.useState(false);
-  const [bestSellerRank, setBestSellerRank] = React.useState(10);
-  const [publisher, setPublisher] = React.useState("");
-  const [url, setUrl] = React.useState("nnnnnnnnnnn");
-  const [publishedDate, setPublishedDate] = React.useState("");
+
+  const [url, setUrl] = React.useState("");
+
   const [isAlert, setIsAlert] = React.useState("");
   const [alert, setAlert] = React.useState({
     show: true,
@@ -34,8 +32,8 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        bookLists,
-        setBookLists,
+        books,
+        setBooks,
         title,
         setTitle,
         bookDesc,
@@ -44,8 +42,8 @@ export const AppProvider = ({ children }) => {
         setPrice,
         author,
         setAuthor,
-        isbnNumber,
-        setIsbnNumber,
+        ISBN,
+        setISBN,
         language,
         setLanguage,
         category,

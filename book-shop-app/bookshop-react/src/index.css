@@ -189,6 +189,16 @@ section main {
   border-radius: 5px;
   outline: none;
 }
+
+.select-container {
+  max-width: 200px;
+}
+.select {
+  background-color: yellow;
+}
+.option {
+  background-color: #db1111;
+}
 /* ..................................End of Addbook..............................................................................*/
 
 /* ..................................Alert..............................................................................*/
@@ -218,10 +228,12 @@ section main {
   height: 400px;
   position: absolute;
   margin: 100px 40px;
-  display:none;
+  display: none;
 }
 
-.filter-container.show {display: block;}
+.filter-container.show {
+  display: block;
+}
 .sort-section,
 .filter-section {
   padding: 20px 20px;

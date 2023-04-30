@@ -3,8 +3,8 @@ import { useGlobalContext } from "../context";
 
 export const ShowBook = () => {
   const {
-    bookLists,
-    setBookLists,
+    books,
+    setBooks,
     bookIndex,
     setBookIndex,
     displayCoverUrl,

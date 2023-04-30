@@ -17,17 +17,20 @@ export const getSingleBook = async (bookID) => {
   });
 };
 /**/
-export const postBook = async (books) => {
-  return await axios.post("http://localhost:5000/api/v1/books", { books });
+export const postBook = async (book) => {
+  return await axios.post("http://localhost:5000/api/v1/books", book);
 };
 
 export const deleteBook = async (bookID) => {
-  return await axios.delete(`http://localhost:5000/api/v1/books/:${bookID}`);
+  return await axios.delete(
+    `http://localhost:5000/api/v1/books/${bookID}`)
 };
+
+
 
 export const updateBook = async (bookID, book) => {
   return await axios.patch(
-    `http://localhost:5000/api/v1/books/:${bookID}`,
+    `http://localhost:5000/api/v1/books/${bookID}`,
     book
   );
 };
