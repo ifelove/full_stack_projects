@@ -17,7 +17,6 @@ const BookSchema = new mongoose.Schema({
   ISBN: { type: String },
   category: { type: String },
   language: { type: String },
-  filtered: { type: Boolean, default: true },
 });
 
 module.exports = mongoose.model("Book", BookSchema);
