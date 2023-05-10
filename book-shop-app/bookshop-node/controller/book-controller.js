@@ -18,6 +18,9 @@ const getAllBooks = async (req, res) => {
    if (language) {
      queryObj.language = language;
    }
+   if (price) {
+     queryObj.price = price;
+   }
   //.....................................................//
   //sorting
   let result = Book.find(queryObj);
