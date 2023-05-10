@@ -9,7 +9,7 @@ export const AppProvider = ({ children }) => {
   const [sectionToFilter, setSectionToFilter] = React.useState("");
   const [filterLocation, setFilterLocation] = React.useState({});
   const [filterableItems, setFilterableItems] = React.useState([]);
-  const [isFilterOpen, setIsFilterOpen] = React.useState(false);
+  const [isFilterOpen, setIsFilterOpen] = React.useState(true);
   const [title, setTitle] = React.useState("");
   const [bookDesc, setBookDesc] = React.useState("");
   const [price, setPrice] = React.useState("");
@@ -19,6 +19,7 @@ export const AppProvider = ({ children }) => {
   const [ISBN, setISBN] = React.useState("");
   const [language, setLanguage] = React.useState("");
   const [category, setCategory] = React.useState("");
+  const [searchText,setSearchText]=React.useState('')
 
   const [url, setUrl] = React.useState("");
 
@@ -28,6 +29,16 @@ export const AppProvider = ({ children }) => {
     msg: "Book updated succesfully",
     status: "success",
   });
+const [ischecked,setIschecked]=React.useState(false)
+const [filterableObjects,setFilterableObjects]=React.useState({})
+const [itemName, setItemName] = React.useState({
+ 
+});
+
+ const [userInfo, setUserInfo] = React.useState({
+   languages: [],
+   result: [],
+ });
 
   return (
     <AppContext.Provider
@@ -68,6 +79,16 @@ export const AppProvider = ({ children }) => {
         setFilterLocation,
         isFilterOpen,
         setIsFilterOpen,
+        searchText,
+        setSearchText,
+        filterableObjects,
+        setFilterableObjects,
+        ischecked,
+        setIschecked,
+        itemName,
+        setItemName,
+        userInfo,
+        setUserInfo,
       }}
     >
       {children}

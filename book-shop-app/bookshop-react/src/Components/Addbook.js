@@ -41,11 +41,11 @@ const Addbook = () => {
     );
     //calling post method
    // console.log(book);
-   // setTitle("");
-   // setAuthor("");
-   // setPrice("");
-  //  setUrl("");
-   // setISBN("");
+    setTitle("");
+    setAuthor("");
+    setPrice("");
+   setUrl("");
+    setISBN("");
   };
 
   let [value, setValue] = React.useState(null);

@@ -17,6 +17,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Navbar />
+        <FilterComponent />
         <Routes>
           <Route path="/" Component={Home}></Route>
           <Route path="/booklist" Component={BookList}></Route>
@@ -25,10 +26,11 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
+
       {/*
    
        *  <Addbook />
-       *<FilterComponent />
+       *
        *   <Navbar />
        *
        * <Alert />

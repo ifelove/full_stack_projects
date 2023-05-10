@@ -8,6 +8,7 @@ body {
   background-color: rgb(33, 33, 36);
   color: #d1c9c9;
 }
+html{scroll-behavior: smooth;}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

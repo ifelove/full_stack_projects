@@ -1,8 +1,8 @@
 import React from "react";
 import { useGlobalContext } from "../context";
 import { AiOutlineUnorderedList } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
-import { postBook, updateBook } from "../Services/service";
+import { useNavigate ,useParams} from "react-router-dom";
+import { postBook, updateBook,getSingleBook } from "../Services/service";
 import Select from "react-select";
 const Updatebook = () => {
   const {
@@ -22,48 +22,34 @@ const Updatebook = () => {
     setCategory,
   } = useGlobalContext();
 
+const bookId=useParams()
+const{id}=bookId
+React.useEffect(()=>{
+  getSingleBook(id).then((res)=>{const{title,category,author,language,url,price,ISBN}=res.data.book;
+  setTitle(title);
+  setAuthor(author);
+  setCategory(category);
+  setLanguage(language);
+  setPrice(price);
+  setUrl(url);
+  setISBN(ISBN)
+}).catch((error)=>{console.log(error)})
+},[id])
 
+const updatebook=(id)=>{
+const book={title:title,price:price,author:author,language:language,category:category,ISBN:ISBN,url:url}
+updateBook(id,book).then(()=>{console.log('updated successfully')}).catch((error)=>{console.log(error)})
+}
 
-
-
-
-  
   const navigate = useNavigate();
-  const saveBook = (e) => {
-    e.preventDefault();
-    const book = {
-      title: title,
-      price: price,
-      author: author,
-      category: category,
-      language: language,
-      ISBN: ISBN,
-      url: url,
-    };
-    //send book to the server
-
-    postBook(book).then(() =>
-      console.log(`${title} by ${author} posted successfully`)
-    );
-    //calling post method
-    // console.log(book);
-    // setTitle("");
-    // setAuthor("");
-    // setPrice("");
-    //  setUrl("");
-    // setISBN("");
-  };
-
+  
   let [value, setValue] = React.useState(null);
   const options = [
     { value: "english", label: "english" },
     { value: "french", label: "french" },
   ];
-  const optionHandler = (selected) => {
-    console.log(selected.value);
-    setValue(selected.value);
-    setLanguage(value);
-  };
+ 
+
   const languages = [
     "Select Language",
     "English",
@@ -180,7 +166,7 @@ const Updatebook = () => {
         </section>
 
         <section className="btn-section">
-          <button onClick={saveBook}>Save</button>
+          <button onClick={()=>updatebook(id)}>Update</button>
           <span>
             <button>Cancel</button>
           </span>
