@@ -11,6 +11,13 @@ const getAllBooks = async (req, res) => {
   if (author) {
     queryObj.author = author;
   }
+
+  if (category) {
+    queryObj.category = category;
+  }
+   if (language) {
+     queryObj.language = language;
+   }
   //.....................................................//
   //sorting
   let result = Book.find(queryObj);
@@ -47,7 +54,7 @@ const getAllBooks = async (req, res) => {
 
   const books = await result;
 
-  res.status(201).json({ books, nHbits: books.length });
+  res.status(201).json({ books, nHbits: books.length ,totalCount});
 };
 const getSingleBooks = async (req, res) => {
   const bookID = req.params.id;
