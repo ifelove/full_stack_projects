@@ -5,6 +5,7 @@ const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
   const [books, setBooks] = React.useState([]);
+   const [filterbooks, setFilterBooks] = React.useState([]);
   const [bookIndex, setBookIndex] = React.useState(1);
   const [sectionToFilter, setSectionToFilter] = React.useState("");
   const [filterLocation, setFilterLocation] = React.useState({});
@@ -31,9 +32,7 @@ export const AppProvider = ({ children }) => {
   });
 const [ischecked,setIschecked]=React.useState(false)
 const [filterableObjects,setFilterableObjects]=React.useState({})
-const [itemName, setItemName] = React.useState({
- 
-});
+const [itemName, setItemName] = React.useState([]);
 
  const [userInfo, setUserInfo] = React.useState({
    languages: [],
@@ -89,6 +88,8 @@ const [itemName, setItemName] = React.useState({
         setItemName,
         userInfo,
         setUserInfo,
+        filterbooks,
+        setFilterBooks,
       }}
     >
       {children}

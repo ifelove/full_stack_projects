@@ -1,10 +1,19 @@
 import React from "react";
 import { useGlobalContext } from "../context";
+import axios from "axios";
+import { updateBook } from "../Services/service";
 
 const FilterComponent = () => {
   const container = React.useRef(null);
 
   const {
+    url,
+    ISBN,
+    category,
+    price,
+    title,
+    author,
+    language,
     filterableItems,
     filterLocation,
     isFilterOpen,
@@ -16,44 +25,45 @@ const FilterComponent = () => {
     setItemName,
     userInfo,
     setUserInfo,
+    setBooks,
+    filterbooks,
+    setFilterBooks,
   } = useGlobalContext();
 
- // let filtering = [...filterableItems];
+  // let filtering = [...filterableItems];
 
- 
+  // console.log(userInfo.result);
+  // console.log(userInfo.languages)
 
-  console.log(userInfo.result);
-  console.log(userInfo.languages)
-
- // React.useEffect(() => {
+  // React.useEffect(() => {
   //  console.log(userInfo.result);
   //  console.log(userInfo.languages);
- // }, [userInfo]);
-
-  const handleCheckboxChange = (e, position) => {
+  // }, [userInfo]);
+console.log('itenName',itemName)
+  const handleCheckboxChange = (e, id) => {
     let { value, checked } = e.target;
     const { languages, result } = userInfo;
 
     // console.log(result)
     const updatedState = result.map((item, index) =>
-      index === position ? !item : item
+      index === id ? !item : item
     );
-const updatedLanguage=languages.map((item,index)=>
-index===position? null:item)
 
-
+    //const updatedLanguage=languages.map((item,index)=>
+    //index===position? null:item)
 
     //  console.log(value);
     //  console.log(checked);
 
     if (checked) {
       //  console.log("yes checked");
-//console.log('updatedlanguage',updatedLanguage);
+      //console.log('updatedlanguage',updatedLanguage);
       setUserInfo({
         languages: [...languages, value],
         result: [...updatedState],
       });
-    } else {//console.log('updatedlanguage',updatedLanguage);
+    } else {
+      //console.log('updatedlanguage',updatedLanguage);
 
       //   console.log("no unchecked");
       setUserInfo({
@@ -61,7 +71,24 @@ index===position? null:item)
         result: [...updatedState],
       });
     }
-
+    const book = {
+      title: title,
+      price: price,
+      author: author,
+      language: language,
+      category: category,
+      ISBN: ISBN,
+      url: url,
+    };
+    
+    updateBook(id, {...book,marked:checked})
+      .then(() => {
+        console.log("updated successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(checked);
     //   console.log(userInfo.languages);
     //  console.log(userInfo.result);
   };
@@ -70,7 +97,15 @@ index===position? null:item)
 
   const handleOkFilter = (e) => {
     e.preventDefault();
-    console.log(userInfo);
+    // console.log(userInfo.languages);
+    // console.log(userInfo.result);
+
+    getFilterObt().then((res) => {
+      // console.log(res.data);
+      setBooks(res.data.books);
+    });
+
+    setIsFilterOpen(false);
 
     /** 
 let checkboxes = document.querySelectorAll('input');
@@ -84,6 +119,12 @@ let checkboxes = document.querySelectorAll('input');
     //console.log(e)
   };
 
+  const getFilterObt = async () => {
+    return await axios.get(
+      `http://localhost:5000/api/v1/books?${filterableObjects.text}=${userInfo.languages}`
+    );
+  };
+
   React.useEffect(() => {
     const filterContainer = container.current;
     const { center, bottom } = filterLocation;
@@ -94,7 +135,9 @@ let checkboxes = document.querySelectorAll('input');
   return (
     <div
       className={`${
-        isFilterOpen ? "filter-container show" : "filter-container"
+        filterableItems.length > 0 && isFilterOpen
+          ? "filter-container show"
+          : "filter-container"
       }`}
       ref={container}
       // onMouseOut={() => setIsFilterOpen(!isFilterOpen)}
@@ -121,7 +164,13 @@ let checkboxes = document.querySelectorAll('input');
             />
           </main>
           <section className="checkbox-section">
-            {filterableItems.map((item, index) => {
+            {
+            
+            
+           // itemName.map((item,index) => 
+           
+           filterableItems.map((item,index)=>{
+             // const {tex,_id,marked}=item
               return (
                 <div key={index}>
                   <label htmlFor="">
@@ -130,10 +179,14 @@ let checkboxes = document.querySelectorAll('input');
                       name={filterableObjects.text}
                       className="checkbox"
                       value={item}
-                      checked={userInfo.result[index]}
+                      //value={tex}
+                       checked={userInfo.result[index]}
+                      //  checked={marked}
+                      //onChange={(e) => handleCheckboxChange(e, _id)}
                       onChange={(e) => handleCheckboxChange(e, index)}
                     />
-                    {item}
+{item}
+                    {/**  {tex}*/}
                   </label>
                 </div>
               );

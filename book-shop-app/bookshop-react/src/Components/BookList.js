@@ -26,6 +26,8 @@ export const BookList = () => {
     setItemName,
     userInfo,
     setUserInfo,
+    filterbooks,
+    setFilterBooks,
   } = useGlobalContext();
 
   const fetch = () =>
@@ -102,24 +104,46 @@ export const BookList = () => {
     setFilterLocation({ center, bottom });
   };
   const displayfilter = async (text) => {
+    await getAllBooks(page, limit)
+      .then((res) => {
+        const data = res.data.books;
+        // console.log(data)
+        // const totalCount = res.data.totalCount;
+        // setPagecount(Math.ceil(totalCount / limit));
+
+        setFilterBooks(data);
+      })
+      .catch((error) => console.log(error));
+
     const output = [];
-    await books.forEach((item) => {
+    let marked = [];
+    await filterbooks.forEach((item) => {
       output.push(item[text]);
-  //const s= [...output,item[text]]
-     
+      marked = [...marked, item.marked];
+      console.log(output);
     });
-     console.log(output);
+
+    const filtered = await filterbooks.map((item) => {
+      const { _id, marked } = item;
+       output.push(item[text]);
+       let tex=item[text]
+      return {tex, _id, marked};
+    });
+   // console.log('filtered',filtered);
+    setItemName([...filtered])
+
+   // console.log(output);
     setFilterableItems(output);
-     setUserInfo({
-       languages: [...output],
-       result:new Array(output.length).fill(true),
-     });
+    setUserInfo({
+      languages: [...output],
+      result: [...marked],
+    });
     setFilterableObjects({ text: text, output: output });
 
-   // await setFilterableItems(output);
-   // setItemName({...itemName, checking: {
-   // [output]: false,
- // }})
+    // await setFilterableItems(output);
+    // setItemName({...itemName, checking: {
+    // [output]: false,
+    // }})
     setIsFilterOpen(!isFilterOpen);
   };
 
@@ -199,7 +223,7 @@ export const BookList = () => {
                     category,
                     price,
                   } = item;
-               //   console.log(item);
+                  //   console.log(item);
                   return (
                     <tr key={_id}>
                       <td onMouseOver={displayBook}>{title}</td>
