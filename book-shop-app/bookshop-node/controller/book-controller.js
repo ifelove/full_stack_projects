@@ -1,12 +1,25 @@
 const Book = require("../models/Book-model");
+
+const testing=async (req,res)=>{
+ const book= await Book.find({}).sort("title").skip(5).limit(3)
+res.status(201).json({book})
+}
+
+
 const getAllBooks = async (req, res) => {
-  const { title, price, author, category, language, sort, fields } = req.query;
+  const { title, price, author, category, language, sort, fields, filtering } =
+    req.query;
   const queryObj = {};
 
   if (title) {
     queryObj.title = { $regex: title, $options: "i" };
   }
   //filtering numerically
+
+  if (filtering) {
+    console.log(filtering);
+    res.status(201).json(filtering);
+  }
 
   if (author) {
     queryObj.author = author;
@@ -15,24 +28,38 @@ const getAllBooks = async (req, res) => {
   if (category) {
     queryObj.category = category;
   }
-   if (language) {
-     queryObj.language = language;
+  if (language) {
+    queryObj.language = language;
+  }
+
+
+ if (price) {
+     queryObj.price = {$in:price.split(",")};
+     
    }
+
+
+  /**
    if (price) {
-     queryObj.price = price;
+     queryObj.price = {$in:price.split(",")};
    }
+
+    */
   //.....................................................//
   //sorting
   let result = Book.find(queryObj);
 
   if (sort) {
     const listToSort = sort.split(",").join(" ");
-    result = await result.sort(listToSort);
+    console.log(listToSort);
+    result = result.sort(listToSort);
+  } else {
+    result = result.sort(" createdAt");
   }
   //implementing select method
   if (fields) {
     const listToSelect = fields.split(",").join(" ");
-    result = await result.select(listToSelect);
+    result = result.select(listToSelect);
   }
   //paginaion
 
@@ -42,7 +69,7 @@ const getAllBooks = async (req, res) => {
   const endIndex = page * limit; //end of the iten on a particular page
 
   //const count= (await result).length
-  //console.log(count)
+  console.log(result);
   result = result.skip(skip).limit(limit);
 
   const totalCount = await Book.countDocuments(queryObj);
@@ -52,12 +79,12 @@ const getAllBooks = async (req, res) => {
   const startRange = skip + 1;
   const endRange = endIndex < totalCount ? endIndex : totalCount;
 
-  res.set('X-Total-Count',totalCount)
-  res.set('Content-Range',`${startRange}-${endRange}/${totalCount}`)
+  res.set("X-Total-Count", totalCount);
+  res.set("Content-Range", `${startRange}-${endRange}/${totalCount}`);
 
   const books = await result;
 
-  res.status(201).json({ books, nHbits: books.length ,totalCount});
+  res.status(201).json({ books, nHbits: books.length, totalCount });
 };
 const getSingleBooks = async (req, res) => {
   const bookID = req.params.id;
@@ -76,10 +103,7 @@ const postBook = async (req, res) => {
 const updateSingleBook = async (req, res) => {
   const bookID = req.params.id;
 
-  const book = await Book.findOneAndUpdate({ _id: bookID }, req.body, {
-    new: true,
-    runValidators: true,
-  });
+  const book = await Book.findOneAndUpdate({ _id: bookID }, req.body);
   if (!book) {
     return res.status(404).json({ msg: `No Book with id: ${bookID}` });
   }
@@ -107,4 +131,5 @@ module.exports = {
   postBook,
   deleteBook,
   updateSingleBook,
+  testing,
 };

@@ -17,6 +17,8 @@ const BookSchema = new mongoose.Schema({
   ISBN: { type: String },
   category: { type: String },
   language: { type: String },
+  createdAt: { type: Date, default: Date.now() },
+  marked: { type: Boolean, default: true },
 });
 
 module.exports = mongoose.model("Book", BookSchema);
