@@ -14,6 +14,7 @@ const createEmployee = async (req, res) => {
   try {
     console.log("creating employee");
     // res.send("creating employee");
+    console.log(req.body)
     const employee = await Employee.create(req.body);
     res.status(201).json({ employee });
   } catch (error) {
