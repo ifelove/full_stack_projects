@@ -39,7 +39,7 @@ const FilterComponent = () => {
   //  console.log(userInfo.result);
   //  console.log(userInfo.languages);
   // }, [userInfo]);
-console.log('itenName',itemName)
+  console.log("itenName", itemName);
   const handleCheckboxChange = (e, id) => {
     let { value, checked } = e.target;
     const { languages, result } = userInfo;
@@ -80,8 +80,8 @@ console.log('itenName',itemName)
       ISBN: ISBN,
       url: url,
     };
-    
-    updateBook(id, {...book,marked:checked})
+
+    updateBook(id, {  marked: checked })
       .then(() => {
         console.log("updated successfully");
       })
@@ -98,7 +98,7 @@ console.log('itenName',itemName)
   const handleOkFilter = (e) => {
     e.preventDefault();
     // console.log(userInfo.languages);
-    // console.log(userInfo.result);
+    console.log(userInfo.result);
 
     getFilterObt().then((res) => {
       // console.log(res.data);
@@ -165,32 +165,34 @@ let checkboxes = document.querySelectorAll('input');
           </main>
           <section className="checkbox-section">
             {
-            
-            
-           // itemName.map((item,index) => 
-           
-           filterableItems.map((item,index)=>{
-             // const {tex,_id,marked}=item
-              return (
-                <div key={index}>
-                  <label htmlFor="">
-                    <input
-                      type="checkbox"
-                      name={filterableObjects.text}
-                      className="checkbox"
-                      value={item}
-                      //value={tex}
-                       checked={userInfo.result[index]}
-                      //  checked={marked}
-                      //onChange={(e) => handleCheckboxChange(e, _id)}
-                      onChange={(e) => handleCheckboxChange(e, index)}
-                    />
-{item}
-                    {/**  {tex}*/}
-                  </label>
-                </div>
-              );
-            })}
+              // itemName.map((item,index) =>{
+
+              filterableItems.map((item, index) => {
+                // const {tex,_id,marked}=item
+                return (
+                  <div key={index}>
+                    <label htmlFor="">
+                      <input
+                        type="checkbox"
+                        name={filterableObjects.text}
+                        className="checkbox"
+                        value={item}
+                        //  value={tex}
+                        checked={userInfo.result[index]}
+                        // checked={
+
+                        //    true? marked: !marked
+                        //  }
+                        //onChange={(e) => handleCheckboxChange(e, _id)}
+                        onChange={(e) => handleCheckboxChange(e, index)}
+                      />
+                      {item}
+                      {/**   {tex}*/}
+                    </label>
+                  </div>
+                );
+              })
+            }
           </section>
           <div className="filter-button">
             <button onClick={handleOkFilter}>Ok</button>

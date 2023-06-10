@@ -104,7 +104,7 @@ export const BookList = () => {
     setFilterLocation({ center, bottom });
   };
   const displayfilter = async (text) => {
-    await getAllBooks(page, limit)
+    await getAllBooks(page, 3)
       .then((res) => {
         const data = res.data.books;
         // console.log(data)
