@@ -76,10 +76,10 @@ const Navbar = () => {
        */}
       <section className="account-section">
         <NavLink to="/login" className="link section-link login">
-          Login
+          Sign In
         </NavLink>
-        <NavLink to="/signup" className="link section-link">
-          Sign Up
+        <NavLink to="/signup" className="link section-link get-started">
+          Get Started
         </NavLink>
       </section>
     </nav>
