@@ -48,17 +48,71 @@ const Hero = () => {
         />
       </div>
       <main className="what-u-can">
-        <h2 style={{ textAlign: "left", padding: "100px" }}>Key Features</h2>
+        <h2 style={{ textAlign: "left", padding: "100px", color: "black" }}>
+          Key Features
+        </h2>
         <section className="features">
           <div className="feature-1">
             <div className="feature-img"></div>
             <div className="feature-heading">
-              <h3>heading here</h3>
-              <span className="feature-deatail"> the details is here</span>
+              <h5>Kanban</h5>
+              <span className="feature-deatail">
+                Visualize the state of your job search in a kanban board. See
+                how many applications, interviews and offers you’ve received in
+                one view.
+              </span>
             </div>
           </div>
-          <div className="feature-1"></div>
-          <div className="feature-1"></div>
+          <div className="feature-1">
+            <div className="feature-img"></div>
+            <div className="feature-heading">
+              <h5>Collect jobs from across the web</h5>
+              <span className="feature-deatail">
+                Our Chrome Extension can save jobs from large job sites like
+                Indeed and LinkedIn to small startup career pages.
+              </span>
+            </div>
+          </div>
+          <div className="feature-1">
+            <div className="feature-img"></div>
+            <div className="feature-heading">
+              <h5>Manage tasks</h5>
+              <span className="feature-deatail">
+                Track everything you need to do to get your dream job, from
+                polishing your resume to preparing for the big interview.
+              </span>
+            </div>
+          </div>
+          <div className="feature-1">
+            <div className="feature-img"></div>
+            <div className="feature-heading">
+              <h5>Manage contacts</h5>
+              <span className="feature-deatail">
+                Keep contact information for anyone you interact with during
+                your search, from interviewers to recruiters and everyone in
+                between.
+              </span>
+            </div>
+          </div>
+          <div className="feature-1">
+            <div className="feature-img"></div>
+            <div className="feature-heading">
+              <h5>Upload Documents</h5>
+              <span className="feature-deatail">
+                Upload your resumes, cover letters and any other job search
+                documents you need. Then link them to jobs, activities and more.
+              </span>
+            </div>
+          </div>
+          <div className="feature-1">
+            <div className="feature-img"></div>
+            <div className="feature-heading">
+              <h5>Powerful analytics</h5>
+              <span className="feature-deatail">
+                Track your job search progress through insightful metrics.
+              </span>
+            </div>
+          </div>
         </section>
       </main>
     </div>

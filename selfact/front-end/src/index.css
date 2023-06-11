@@ -235,8 +235,6 @@ ul {
   font-size: 48px;
 }
 /*...................................................................................................*/
-.landing {
-}
 .hero {
   background-color: rgb(39, 37, 37);
   height: 730px;
@@ -293,7 +291,32 @@ ul {
   margin-top: 80px;
 }
 
-.sub-hero{
-  padding-top: 50px ;
+.sub-hero {
+  padding-top: 50px;
   color: #000;
 }
+
+.feature-1 {
+  color: #000;
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 50px;
+  cursor:pointer;
+}
+.feature-1 h5 {
+  font-weight: bold;
+}
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.what-u-can {
+  background-color: #0f5132;
+  width: 80%;
+  margin: auto;
+  padding-left: 100px;
+}
+/*..........................................Review Slider..............................................................*/
+
