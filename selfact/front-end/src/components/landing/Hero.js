@@ -1,4 +1,5 @@
 import React from "react";
+import ReviewSlider from "../ReviewSlider";
 
 const Hero = () => {
   return (
@@ -115,6 +116,7 @@ const Hero = () => {
           </div>
         </section>
       </main>
+      <ReviewSlider />
     </div>
   );
 };
