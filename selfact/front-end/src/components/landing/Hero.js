@@ -1,5 +1,19 @@
 import React from "react";
 import ReviewSlider from "../ReviewSlider";
+import Pricing from "./Pricing";
+import Footer from "../Footer";
+import img1 from "../images/img1.png";
+import img2 from "../images/img2.png";
+import img3 from "../images/img3.png";
+import img4 from "../images/img4.png";
+import img5 from "../images/img5.png";
+import img6 from "../images/img6.png";
+import img7 from "../images/img7.png";
+import img8 from "../images/img8.png";
+import img9 from "../images/img9.png";
+import img10 from "../images/img10.png";
+import img11 from "../images/img11.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -14,7 +28,10 @@ const Hero = () => {
               control and acheive your goals
             </h5>
             <main className="hero-btns">
-              <button className="hero-sign-up-btn">Get Started</button>
+              <Link to={"/register"}>
+                
+                <button className="hero-sign-up-btn">Get Started</button>
+              </Link>
             </main>
           </div>
           <div className="second-flex">
@@ -49,12 +66,21 @@ const Hero = () => {
         />
       </div>
       <main className="what-u-can">
-        <h2 style={{ textAlign: "left", padding: "100px", color: "black" }}>
-          Key Features
-        </h2>
+        <div className="hero-feature">
+          <h2>Key Features</h2>
+          <p>
+            Exclusive Features Gigmos enables businesses to reduce support cost
+            by smart outsourcing of their workforce on Gigmos platform. Gigmos
+            AI platform ensures onboarding of sharp and motivated Gig workers,
+            through stringent testing standards, from across the globe.
+          </p>
+        </div>
+
         <section className="features">
           <div className="feature-1">
-            <div className="feature-img"></div>
+            <div className="feature-img">
+              <img src={img1} alt="" className="imgs" />
+            </div>
             <div className="feature-heading">
               <h5>Kanban</h5>
               <span className="feature-deatail">
@@ -65,9 +91,12 @@ const Hero = () => {
             </div>
           </div>
           <div className="feature-1">
-            <div className="feature-img"></div>
+            <div className="feature-img">
+              {" "}
+              <img src={img2} alt="" className="imgs" />
+            </div>
             <div className="feature-heading">
-              <h5>Collect jobs from across the web</h5>
+              <h5>Collect jobs from across</h5>
               <span className="feature-deatail">
                 Our Chrome Extension can save jobs from large job sites like
                 Indeed and LinkedIn to small startup career pages.
@@ -75,7 +104,10 @@ const Hero = () => {
             </div>
           </div>
           <div className="feature-1">
-            <div className="feature-img"></div>
+            <div className="feature-img">
+              {" "}
+              <img src={img8} alt="" className="imgs" />
+            </div>
             <div className="feature-heading">
               <h5>Manage tasks</h5>
               <span className="feature-deatail">
@@ -85,7 +117,10 @@ const Hero = () => {
             </div>
           </div>
           <div className="feature-1">
-            <div className="feature-img"></div>
+            <div className="feature-img">
+              {" "}
+              <img src={img4} alt="" className="imgs" />
+            </div>
             <div className="feature-heading">
               <h5>Manage contacts</h5>
               <span className="feature-deatail">
@@ -96,7 +131,10 @@ const Hero = () => {
             </div>
           </div>
           <div className="feature-1">
-            <div className="feature-img"></div>
+            <div className="feature-img">
+              {" "}
+              <img src={img5} alt="" className="imgs" />
+            </div>
             <div className="feature-heading">
               <h5>Upload Documents</h5>
               <span className="feature-deatail">
@@ -106,7 +144,10 @@ const Hero = () => {
             </div>
           </div>
           <div className="feature-1">
-            <div className="feature-img"></div>
+            <div className="feature-img">
+              {" "}
+              <img src={img11} alt="" className="imgs" />
+            </div>
             <div className="feature-heading">
               <h5>Powerful analytics</h5>
               <span className="feature-deatail">
@@ -115,8 +156,19 @@ const Hero = () => {
             </div>
           </div>
         </section>
+        <button className="more-btn"> View More</button>
       </main>
+
       <ReviewSlider />
+      <section className="pricing-hero-section">
+        <h1>Need to level up your career even faster?</h1>
+        <p>
+          Upgrade to unlock Teal's premium features and turbocharge your job
+          search.
+        </p>
+        <Pricing />
+      </section>
+      <Footer />
     </div>
   );
 };

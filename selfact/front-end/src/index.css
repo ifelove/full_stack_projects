@@ -41,7 +41,7 @@
   --green-dark: #0f5132;
 
   /* rest of the vars */
-  --backgroundColor: var(--grey-50);
+  --backgroundColor: white;
   --textColor: var(--black);
   --borderRadius: 0.25rem;
   --letterSpacing: 1px;
@@ -81,11 +81,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
-}
-
-p {
-  margin-bottom: 1.5rem;
-  max-width: 20px;
 }
 
 h1,
@@ -142,7 +137,7 @@ ul {
   border-radius: 5px;
 }
 .link {
-  color: #1d4ed8;
+  color: #181819;
 }
 
 /*...................................NavBar..............................................................................*/
@@ -151,8 +146,13 @@ ul {
   height: 10vh;
   background-color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid gray;
+  padding-bottom: 60px;
+  padding-left: 40px;
+  padding-right: 30px;
+  padding-top: 40px;
 }
 .nav-logo {
   display: flex;
@@ -234,7 +234,18 @@ ul {
   font-weight: bold;
   font-size: 48px;
 }
-/*...................................................................................................*/
+.main-logo2 {
+  width: 30px;
+  height: 30px;
+  color: white;
+  background-color: #1d4ed8;
+  border-radius: 5px;
+}
+.main-logo2 h2 {
+  font-weight: bold;
+  font-size: 24px;
+}
+/*..........................................Hero.........................................................*/
 .hero {
   background-color: rgb(39, 37, 37);
   height: 730px;
@@ -295,15 +306,27 @@ ul {
   padding-top: 50px;
   color: #000;
 }
+.hero-feature {
+  padding: 50px;
+  color: white;
+  margin: auto;
+}
+.hero-feature h2 {
+  font-size: 30px;
+}
+.hero-feature p {
+  width: 700px;
+  margin: auto;
+}
 
 .feature-1 {
   color: #000;
   background-color: white;
   border-radius: 5px;
   width: 300px;
-  height: 300px;
   margin-bottom: 50px;
   cursor: pointer;
+  padding-bottom: 40px;
 }
 .feature-1 h5 {
   font-weight: bold;
@@ -313,11 +336,39 @@ ul {
   grid-template-columns: 1fr 1fr 1fr;
 }
 .what-u-can {
-  background-color: #0f5132;
-  width: 80%;
+  background-color: #6d8ee9;
+  width: 90%;
   margin: auto;
-  padding-left: 100px;
+  border-radius: 10px;
+  padding-left: 60px;
+  padding-bottom: 60px;
 }
+
+.more-btn {
+  display: flex;
+  background-color: white;
+  color: #6d8ee9;
+  margin: auto;
+  width: 200px;
+  height: 30px;
+  padding: 40px;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  transform: translateX(-20%);
+  cursor: pointer;
+}
+.pricing-hero-section {
+  background-color: white;
+  padding: 30px;
+}
+.pricing-hero-section h1,
+.pricing-hero-section p {
+  color: #000;
+}
+
 /*..........................................Review Slider..............................................................*/
 
 .person-img {
@@ -391,4 +442,206 @@ article.nextSlide {
   font-size: 28px;
   padding: 10px;
   background-color: #1d4ed8;
+}
+.prev {
+  border-radius: 15px 0 0 15px;
+}
+.next {
+  border-radius: 0 15px 15px 0;
+}
+/*.........................................Pricing.............................................................*/
+.pricing-title {
+  color: white;
+}
+
+.pricing-container {
+  padding-top: 40px;
+  margin: 0 auto;
+  background-color: #1e3a8a;
+  width: 600px;
+  height: 750px;
+  border-radius: 0 0 30px 30px;
+}
+.pricing-section {
+  padding-top: 40px;
+}
+.price-check {
+  display: flex;
+
+  padding: 20px;
+  font-size: 23px;
+}
+li {
+  margin-left: 30px;
+}
+.check-icon {
+  font-size: 43px;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 43px;
+  font-weight: bolder;
+}
+/*..............................................Footer.......................................................................*/
+.footer-container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  background-color: #102a43;
+  margin-top: 100px;
+  min-height: 500px;
+  padding-top: 80px;
+}
+.footer-logo {
+  height: 100px;
+  width: 100px;
+  background-color: #222;
+  margin-left: 80px;
+  margin-right: 120px;
+}
+.sections {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background-color: #000;
+}
+.section1,
+.section2,
+.section3 {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  margin-right: 200px;
+}
+
+.section1 p,
+.section2 p,
+.section3 p {
+  padding-bottom: 20px;
+}
+
+.feature-img {
+  height: 200px;
+  width: 200px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-left: 12%;
+  border-radius: 40% 35% 10% 20%;
+}
+.imgs {
+  height: 100%;
+  width: 100%;
+}
+/*...................................login........................................................................*/
+
+.login-container {
+  width: 380px;
+  height: 400px;
+  background-color: rgb(224, 221, 221);
+  flex-direction: column;
+  float: center;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: -1px 2px 0.5px 1px rgb(158, 157, 157);
+  border: 0.1px solid rgb(176, 170, 170);
+}
+.input-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  width:300px ;
+}
+.inputLogin {
+  height: 30px;
+  width: 230px;
+  border-radius: 5px;
+  outline: none;
+  border: 0.1px solid gray;
+  padding: 10px;
+}
+.remember{margin-top: 10px;}
+.login-btn{ margin-top: 40px;
+  background-color: #1d4ed8;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width:70px;
+  border: none;
+  cursor: pointer;}
+  .fogt-passwd{color: rgb(224, 59, 59);font-size: 11px;cursor: pointer;}
+
+/*...................................register........................................................................*/
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  background-color: white;
+  font-size: 15px;
+}
+.register-container {
+  width: 500px;
+  height: 600px;
+  background-color: rgb(224, 221, 221);
+  flex-direction: column;
+  float: center;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: -1px 2px 0.5px 1px rgb(158, 157, 157);
+  border: 0.1px solid rgb(176, 170, 170);
+}
+.register-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+.register-logo span {
+  margin-left: 10px;
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+}
+.formInput {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+.reg-form {
+  width: 450px;
+}
+.inputs {
+  height: 30px;
+  width: 300px;
+  border-radius: 5px;
+  outline: none;
+  border: 0.1px solid gray;
+  padding: 10px;
+}
+.reg-btn {
+  margin-top: 40px;
+  background-color: #1d4ed8;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100px;
+  border: none;
+  cursor: pointer;
+}
+.login-redirect {
+  font-size: 13px;
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+}
+.login-redirect p {
+  margin-right: 5px;
 }

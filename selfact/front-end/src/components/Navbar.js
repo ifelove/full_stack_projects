@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Link, NavLink } from "react-router-dom";
 import { BsFillCaretDownFill, BsFillCaretRightFill } from "react-icons/bs";
 import Signage from "./Sign";
+import Register from "./user/Register";
 
 const Navbar = () => {
   return (
@@ -12,6 +13,9 @@ const Navbar = () => {
         <h1 className="nav-bar-heading">Selfact</h1>
       </section>
 
+
+{/*
+
       <div className="nav-links">
         {/** 
         <NavLink
@@ -21,6 +25,7 @@ const Navbar = () => {
           }}
         >Messages</NavLink>
          */}
+         {/*
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -46,7 +51,16 @@ const Navbar = () => {
           Blog
         </NavLink>
       </div>
+      
+      
+      */}
+      
+      
       {/**
+       * 
+       * 
+       * 
+       * 
 
       <div className="account-link">
         <span>
@@ -78,7 +92,7 @@ const Navbar = () => {
         <NavLink to="/login" className="link section-link login">
           Sign In
         </NavLink>
-        <NavLink to="/signup" className="link section-link get-started">
+        <NavLink to="/register" className="link section-link get-started">
           Get Started
         </NavLink>
       </section>
