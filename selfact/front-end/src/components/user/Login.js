@@ -1,5 +1,6 @@
 import React from "react";
 import SmallLogo from "../SmallLogo";
+import {Link} from "react-router-dom"
 
 const Login = () => {
   return (
@@ -25,6 +26,9 @@ const Login = () => {
           <button className="login-btn">Login</button>
         </form>
         <p className="fogt-passwd">Forgot your password?</p>
+        <h6>
+          Not a member?<Link to={"/register"}>Register</Link>{" "}
+        </h6>
       </div>
     </main>
   );

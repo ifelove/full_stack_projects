@@ -538,7 +538,7 @@ li {
 
 .login-container {
   width: 380px;
-  height: 400px;
+  height: 450px;
   background-color: rgb(224, 221, 221);
   flex-direction: column;
   float: center;
@@ -573,6 +573,8 @@ li {
   border: none;
   cursor: pointer;}
   .fogt-passwd{color: rgb(224, 59, 59);font-size: 11px;cursor: pointer;}
+
+  .login-container h6{color: #1c1b1b;margin-top: 50px;font-size: 12px;}
 
 /*...................................register........................................................................*/
 .container {

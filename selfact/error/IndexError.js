@@ -1,8 +1,8 @@
 
-class CustomError extends Error{
- constructor(message){
-super(message)
- }
-}
+const CustomError=require("./CustomError")
+const BadRequestError = require("./BadRequestError");
+const UnAuthorizedError = require("./UnAuthorizedError");
+const UnAuthenticatedError=require("./UnAuthenticatedError")
+const NotFoundError=require("./NotFoundError")
 
-module.exports=CustomError
+module.exports= {CustomError,BadRequestError,UnAuthenticatedError,UnAuthorizedError,NotFoundError}
