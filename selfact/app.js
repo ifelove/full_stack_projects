@@ -8,8 +8,10 @@ const errorHandler = require("./middleware/errorHandler");
 const authRouter = require("./routes/auth");
 const connectDB = require("./db/connectDB");
 require("dotenv").config();
+const cookieParser = require("cookie-parser");
 
 app.use(express.json());
+app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static(path.resolve(__dirname, "./front-end/build")));
 
 app.use("/api/v1/auth", authRouter);
