@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
       unique: true,
-     // required: [true, "Email is required"],
+      // required: [true, "Email is required"],
       validate: {
         validator: valiator.isEmail,
         message: "Please provide valid email",
@@ -48,6 +48,9 @@ UserSchema.pre("save", async function () {
   this.password = await bcryptjs.hash(this.password, salt);
 });
 
-//UserSchema.methods.comparePassword
+UserSchema.methods.comparePassword = async function (passwordToCompare) {
+  const isMatch = await bcryptjs.compare(passwordToCompare, this.password);
+  return isMatch;
+};
 
 module.exports = mongoose.model("User", UserSchema);

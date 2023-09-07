@@ -2,8 +2,7 @@ const User = require("../model/User");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../error/IndexError");
 
-
-const {createTokenUser,attachedCokiesToRespond}=require("../JWT/indexJwt")
+const { createTokenUser, attachedCokiesToRespond } = require("../JWT/indexJwt");
 
 const registerUser = async (req, res) => {
   const { firstname, lastname, othername, email, password, passwordConfirm } =
@@ -31,12 +30,18 @@ const registerUser = async (req, res) => {
     throw new BadRequestError("Password not match");
   }
   const user = await User.create(req.body);
-  const tokenUser = createTokenUser(user)
-  attachedCokiesToRespond({res,user:tokenUser})
+  const tokenUser = createTokenUser(user);
+  attachedCokiesToRespond({ res, user: tokenUser });
   res.status(StatusCodes.OK).json({ tokenUser });
 };
 
 const loginUser = (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    throw new BadRequestError("Provide email or Password to Login");
+  }
+  
   res.send("login user");
 };
 
