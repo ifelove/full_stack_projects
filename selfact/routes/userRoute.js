@@ -22,6 +22,7 @@ router.route("/updatepassword").patch(authenticateUser, updateUserPasword);
 router
   .route("/:id")
   .get(authenticateUser, getSingleUser)
-  .delete(authenticateUser, authourizeUser(["admin", "user"]), deleteUser);
+
+  router.route("/delete").delete(authenticateUser, authourizeUser("user","admin"), deleteUser);
 
 module.exports = router;

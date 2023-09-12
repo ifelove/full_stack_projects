@@ -31,27 +31,33 @@ const getSingleUser = async (req, res) => {
   res.status(StatusCodes.OK).json({ user });
 };
 const showCurrentUser = async (req, res) => {
-  const user = await User.findOne({ _id: req.user.userId });
+  const user = await User.findOne({ _id: req.user.userId }).select([
+    "-password",
+    "-passwordConfirm",
+  ]);
   res.status(StatusCodes.OK).json({ user });
   //res.status(StatusCodes.OK).json({ user:req.user });
 };
 const updateUser = async (req, res) => {
-  const { email, firstname, othername, lastname, phone } = req.body;
-  if (!email || !firstname || !othername || !lastname) {
+  const {firstname, othername, lastname, phone } = req.body;
+  if (!firstname || !othername || !lastname) {
     throw new BadRequestError("all the field must be provided");
   }
 
-  const user = await User.findOne({ _id: req.user.userId });
-  user.email = email;
+  const user = await User.findOne({ _id: req.user.userId }).select([
+    "-password",
+    "-passwordConfirm",
+  ]);
   user.firstname = firstname;
   user.lastname = lastname;
   user.othername = othername;
+
   await user.save();
   res.status(StatusCodes.OK).json({ user });
 };
 const deleteUser = async (req, res) => {
-  await User.findOneAndDelete({ user: req.user });
-  res.send("user deleted succesfully");
+ await User.findOneAndDelete({ _id: req.user.userId });
+  res.json("user  Account successfully deleted");
 };
 const updateUserPasword = async (req, res) => {
   const { newPassword, oldPassword } = req.body;
@@ -75,7 +81,7 @@ const updateUserPasword = async (req, res) => {
 
   user.password = newPassword;
   await user.save();
-  res.status(StatusCodes.OK).json({ user });
+  res.status(StatusCodes.OK).json("Password has been updated");
 };
 
 module.exports = {

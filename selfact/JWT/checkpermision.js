@@ -1,6 +1,7 @@
 const { UnAuthorizedError } = require("../error/IndexError");
 const UnauthorizedError = require("../error/UnAuthorizedError");
 const checkpermision = (requestUser, resourceUserId) => {
+  console.log(requestUser.userId , resourceUserId.toString());
   if (requestUser.role === "admin") {
     return;
   }
