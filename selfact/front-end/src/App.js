@@ -1,11 +1,10 @@
-import Navbar from './components/Navbar';
-import Landing from './components/landing/Landing';
-import Login from "./components/user/Login"
+import Navbar from "./components/Navbar";
+import Landing from "./components/landing/Landing";
+import Login from "./components/user/Login";
 
-
-import {BrowserRouter,Router,Route, Routes} from 'react-router-dom'
-import './App.css';
-import Register from './components/user/Register';
+import { BrowserRouter, Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Register from "./components/user/Register";
 
 function App() {
   return (
@@ -13,8 +12,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact Component={Landing}></Route>
-          <Route path="/register" exact Component={Register}></Route>
-          <Route path="/login" exact Component={Login}></Route>
+          <Route path="/register"  Component={Register}></Route>
+          <Route path="/login"  Component={Login}></Route>
         </Routes>
       </BrowserRouter>
     </div>

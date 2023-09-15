@@ -9,14 +9,13 @@ const { createTokenUser, attachedCokiesToRespond } = require("../JWT/indexJwt");
 const UnauthorizedError = require("../error/UnAuthorizedError");
 
 const registerUser = async (req, res) => {
-  const { firstname, lastname, othername, email, password, passwordConfirm } =
+  const { firstname, lastname, email, password, passwordConfirm } =
     req.body;
 
   const isEmailAlreadyExist = await User.findOne({ email: email });
   console.log(isEmailAlreadyExist);
   if (
     !firstname ||
-    !othername ||
     !lastname ||
     !email ||
     !password ||
