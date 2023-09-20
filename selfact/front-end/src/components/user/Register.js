@@ -1,15 +1,31 @@
 import React from "react";
 import SmallLogo from "../SmallLogo";
 import { Link, useNavigate } from "react-router-dom";
-
 import { useGlobalContext } from "../../context";
-import { userRegistration } from "../../services/userService";
+import {
+  userRegistration,
+  emailVerificationLink,
+} from "../../services/userService";
+import { FaCheck, FaInfoCircle, FaTimes } from "react-icons/fa";
 
 const Register = () => {
+  const {
+    user,
+    lastname,
+    setLastname,
+    firstname,
+    setFirstname,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    passwordConfirm,
+    setPasswordConfirm,
+  } = useGlobalContext();
   const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
   const PASSWORD_REGEX =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-  const EMAIL_REGEX = "";
+  const EMAIL_REGEX = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
   //ref for firstname input container
   const firstnameInputRef = React.useRef();
   const errRef = React.useRef();
@@ -32,58 +48,83 @@ const Register = () => {
   const [errMsg, setErrMsg] = React.useState("");
   const [success, setSuccess] = React.useState(false);
 
+  //state management for displaying instruction
+  const [bottom, setBottom] = React.useState("");
+  const [center, setCenter] = React.useState("");
+
   //focusing on the first name input in every rerendering
   React.useEffect(() => {
     firstnameInputRef.current.focus();
   }, []);
   //validating the user inputs
-  useEffect(() => {
-    setValidFirstame(USER_REGEX.test(firstname));
+  React.useEffect(() => {
+    if (firstname.match(USER_REGEX) === null) {
+      setValidFirstname(false);
+    } else {
+      setValidFirstname(true);
+    }
   }, [firstname]);
 
-  useEffect(() => {
-    setValidLastname(USER_REGEX.test(lastname));
+  React.useEffect(() => {
+    if (lastname.match(USER_REGEX) === null) {
+      setValidLastname(false);
+    } else {
+      setValidLastname(true);
+    }
   }, [lastname]);
-  useEffect(() => {
-    setValidPassword(PASSWORD_REGEX.test(password));
+
+  React.useEffect(() => {
+    if (email.match(EMAIL_REGEX) === null) {
+      setValidEmail(false);
+    } else {
+      setValidEmail(true);
+    }
+  }, [email]);
+
+  React.useEffect(() => {
+    if (password.match(PASSWORD_REGEX) === null) {
+      setValidPassword(false);
+    } else {
+      setValidPassword(true);
+    }
   }, [password]);
-  useEffect(() => {
-    setValidPasswordConfirm(USER_REGEX.test(passwordConfirm));
+
+  React.useEffect(() => {
+    if (passwordConfirm.match(PASSWORD_REGEX) === null) {
+      setValidPasswordConfirm(false);
+    } else {
+      setValidPasswordConfirm(true);
+    }
     setValidMatch(password === passwordConfirm);
   }, [passwordConfirm]);
-  useEffect(() => {
-    setValidEmail(EMAIL_REGEX.test(email));
-  }, [email]);
-  useEffect(() => {
+
+  React.useEffect(() => {
     setErrMsg("");
   }, [firstname, lastname, password, passwordConfirm]);
 
   const navigate = useNavigate();
-  const {
-    user,
-    lastname,
-    setLastname,
-    firstname,
-    setFirstname,
-    email,
-    setEmail,
-    password,
-    setPassword,
-    passwordConfirm,
-    setPasswordConfirm,
-  } = useGlobalContext();
+
+  const handleOnchange = (e, action) => {
+    console.log(e.target);
+    action(e.target.value);
+
+    const tempBtnLocation = e.target.getBoundingClientRect();
+    const center = (tempBtnLocation.left + tempBtnLocation.right) / 2;
+    const bottom = tempBtnLocation.bottom;
+    setBottom(bottom);
+    setCenter(center);
+  };
 
   const registerUser = (e) => {
-    console.log("hi");
     e.preventDefault();
 
-    const nameInput = USER_REGEX.test(firstname);
-    const passwordInput = PASSWORD_REGEX.test(password);
-    const emailInput = EMAIL_REGEX.test(email);
-    if (!nameInput || !passwordInput || !emailInput) {
-      setErrMsg("Invalid Entry");
-      return;
-    }
+    const nameInput = firstname.match(USER_REGEX);
+    const passwordInput = password.match(PASSWORD_REGEX);
+    const emailInput = email.match(EMAIL_REGEX);
+    // if (!nameInput || !passwordInput || !emailInput) {
+    // setErrMsg("Invalid Entry");
+    //  return;
+    // }
 
     const user = {
       firstname: firstname,
@@ -94,24 +135,27 @@ const Register = () => {
     };
     userRegistration(user)
       .then((response) => {
-        console.log(response.data);
-        try {
-          if (response.status === 200) {
-            setSuccess(true);
-            const userRegistered = response.data.tokenUser;
-            navigate("/login");
+        if (response.status === 200) {
+          setSuccess(true);
+          const userRegistered = response.data.tokenUser;
+          try {
+            console.log(email);
+            emailVerificationLink({ email: email });
+          } catch (error) {
+            console.log(error);
           }
-        } catch (error) {
-          console.log(error);
         }
       })
+      .then(() => {
+        navigate("/verify");
+      })
       .catch((error) => {
-        console.log(error.response);
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-        console.log(error.request);
-        console.log(error.message);
+        // console.log(error.response);
+        //  console.log(error.response.data.msg);
+        // console.log(error.response.status);
+        // console.log(error.response.headers);
+        //  console.log(error.request);
+        //  console.log(error.message);
       });
   };
 
@@ -137,52 +181,33 @@ const Register = () => {
           <section className="formInput">
             <label htmlFor="firstname">
               First Name
-              <FontAwesomeIcon
-                icon={faCheck}
-                className={validFirstname ? "valid" : "hide"}
-              />
-              <FontAwesomeIcon
-                icon={faTimes}
+              <FaCheck className={validFirstname ? "valid" : "hide"} />
+              <FaTimes
                 className={validFirstname || !firstname ? "hide" : "invalid"}
               />
             </label>
-            <input
-              type="text"
-              name="firstname"
-              value={firstname}
-              onChange={(e) => setFirstname(e.target.value)}
-              className="inputs"
-              ref={firstnameInputRef}
-              required
-              aria-invalid={validName ? "false" : "true"}
-              aria-describedby="uidnote"
-              onFocus={() => setFirstnameFocus(true)}
-              onBlur={() => setFirstnameFocus(false)}
-            />
+            <main>
+              <input
+                type="text"
+                autoComplete="false"
+                name="firstname"
+                value={firstname}
+                onChange={(e) => handleOnchange(e, setFirstname)}
+                className="inputs"
+                ref={firstnameInputRef}
+                required
+                aria-invalid={validFirstname ? "false" : "true"}
+                aria-describedby="firstname-note"
+                onFocus={() => setFirstnameFocus(true)}
+                onBlur={() => setFirstnameFocus(false)}
+              />
+            </main>
           </section>
-          <p
-            id="uidnote"
-            className={
-              userFocus && user && !validName ? "instructions" : "offscreen"
-            }
-          >
-            <FontAwesomeIcon icon={faInfoCircle} />
-            4 to 24 characters.
-            <br />
-            Must begin with a letter.
-            <br />
-            Letters, numbers, underscores, hyphens allowed.
-          </p>
-
           <section className="formInput">
             <label htmlFor="lastname">
               Last Name
-              <FontAwesomeIcon
-                icon={faCheck}
-                className={validLastname ? "valid" : "hide"}
-              />
-              <FontAwesomeIcon
-                icon={faTimes}
+              <FaCheck className={validLastname ? "valid" : "hide"} />
+              <FaTimes
                 className={validLastname || !lastname ? "hide" : "invalid"}
               />
             </label>
@@ -190,77 +215,41 @@ const Register = () => {
               type="text"
               name="lastname"
               value={lastname}
-              onChange={(e) => setLastname(e.target.value)}
+              onChange={(e) => handleOnchange(e, setLastname)}
               className="inputs"
               required
-              aria-invalid={validName ? "false" : "true"}
-              aria-describedby="uidnote"
+              aria-invalid={validLastname ? "false" : "true"}
+              aria-describedby="lastname-note"
               onFocus={() => setLastnameFocus(true)}
               onBlur={() => setLastnameFocus(false)}
             />
           </section>
-          <p
-            id="uidnote"
-            className={
-              userFocus && user && !validName ? "instructions" : "offscreen"
-            }
-          >
-            <FontAwesomeIcon icon={faInfoCircle} />
-            4 to 24 characters.
-            <br />
-            Must begin with a letter.
-            <br />
-            Letters, numbers, underscores, hyphens allowed.
-          </p>
 
           <section className="formInput">
             <label htmlFor="email">
               Email
-              <FontAwesomeIcon
-                icon={faCheck}
-                className={validEmail ? "valid" : "hide"}
-              />
-              <FontAwesomeIcon
-                icon={faTimes}
-                className={validEmail || !email ? "hide" : "invalid"}
-              />
+              <FaCheck className={validEmail ? "valid" : "hide"} />
+              <FaTimes className={validEmail || !email ? "hide" : "invalid"} />
             </label>
             <input
               type="text"
               name="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => handleOnchange(e, setEmail)}
               className="inputs"
               required
-              aria-invalid={validPwd ? "false" : "true"}
+              autoComplete="false"
+              aria-invalid={validEmail ? "false" : "true"}
               aria-describedby="email-note"
               onFocus={() => setEmailFocus(true)}
               onBlur={() => setEmailFocus(false)}
             />
           </section>
-          <p
-            id="uidnote"
-            className={
-              userFocus && user && !validName ? "instructions" : "offscreen"
-            }
-          >
-            <FontAwesomeIcon icon={faInfoCircle} />
-            4 to 24 characters.
-            <br />
-            Must begin with a letter.
-            <br />
-            Letters, numbers, underscores, hyphens allowed.
-          </p>
-
           <section className="formInput">
             <label htmlFor="password">
               Password
-              <FontAwesomeIcon
-                icon={faCheck}
-                className={validPassword ? "valid" : "hide"}
-              />
-              <FontAwesomeIcon
-                icon={faTimes}
+              <FaCheck className={validPassword ? "valid" : "hide"} />
+              <FaTimes
                 className={validPassword || !password ? "hide" : "invalid"}
               />
             </label>
@@ -268,42 +257,21 @@ const Register = () => {
               type="password"
               name="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => handleOnchange(e, setPassword)}
               className="inputs"
               required
-              aria-invalid={validPwd ? "false" : "true"}
+              aria-invalid={validPassword ? "false" : "true"}
               aria-describedby="password-note"
               onFocus={() => setPasswordFocus(true)}
               onBlur={() => setPasswordFocus(false)}
             />
           </section>
-          <p
-            id="pwdnote"
-            className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
-          >
-            <FontAwesomeIcon icon={faInfoCircle} />
-            8 to 24 characters.
-            <br />
-            Must include uppercase and lowercase letters, a number and a special
-            character.
-            <br />
-            Allowed special characters:{" "}
-            <span aria-label="exclamation mark">!</span>{" "}
-            <span aria-label="at symbol">@</span>{" "}
-            <span aria-label="hashtag">#</span>{" "}
-            <span aria-label="dollar sign">$</span>{" "}
-            <span aria-label="percent">%</span>
-          </p>
           <section className="formInput">
             <label htmlFor="passwordConfirm">
               {" "}
               Confirm Password
-              <FontAwesomeIcon
-                icon={faCheck}
-                className={validPasswordConfirm ? "valid" : "hide"}
-              />
-              <FontAwesomeIcon
-                icon={faTimes}
+              <FaCheck className={validPasswordConfirm ? "valid" : "hide"} />
+              <FaTimes
                 className={
                   validPasswordConfirm || !passwordConfirm ? "hide" : "invalid"
                 }
@@ -313,7 +281,7 @@ const Register = () => {
               type="password"
               name="passwordConfirm"
               value={passwordConfirm}
-              onChange={(e) => setPasswordConfirm(e.target.value)}
+              onChange={(e) => handleOnchange(e, setPasswordConfirm)}
               className="inputs"
               required
               aria-invalid={validMatch ? "false" : "true"}
@@ -322,13 +290,6 @@ const Register = () => {
               onBlur={() => setPasswordConfirmFocus(false)}
             />
           </section>
-          <p
-            id="confirmnote"
-            className={matchFocus && !validMatch ? "instructions" : "offscreen"}
-          >
-            <FontAwesomeIcon icon={faInfoCircle} />
-            Must match the first password input field.
-          </p>
 
           <button className="reg-btn" onClick={registerUser}>
             Register

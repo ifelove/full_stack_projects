@@ -553,7 +553,7 @@ li {
   justify-content: space-between;
   align-items: center;
   margin-top: 30px;
-  width:300px ;
+  width: 300px;
 }
 .inputLogin {
   height: 30px;
@@ -563,18 +563,30 @@ li {
   border: 0.1px solid gray;
   padding: 10px;
 }
-.remember{margin-top: 10px;}
-.login-btn{ margin-top: 40px;
+.remember {
+  margin-top: 10px;
+}
+.login-btn {
+  margin-top: 40px;
   background-color: #1d4ed8;
   color: white;
   padding: 10px;
   border-radius: 5px;
-  width:70px;
+  width: 70px;
   border: none;
-  cursor: pointer;}
-  .fogt-passwd{color: rgb(224, 59, 59);font-size: 11px;cursor: pointer;}
+  cursor: pointer;
+}
+.fogt-passwd {
+  color: rgb(224, 59, 59);
+  font-size: 11px;
+  cursor: pointer;
+}
 
-  .login-container h6{color: #1c1b1b;margin-top: 50px;font-size: 12px;}
+.login-container h6 {
+  color: #1c1b1b;
+  margin-top: 50px;
+  font-size: 12px;
+}
 
 /*...................................register........................................................................*/
 .container {
@@ -646,4 +658,81 @@ li {
 }
 .login-redirect p {
   margin-right: 5px;
+}
+
+.valid {
+  color: green;
+  margin-left: 10px;
+}
+.invalid {
+  color: red;
+  margin-left: 10px;
+}
+.hide {
+  display: none;
+}
+
+/*
+
+.offscreen {
+  position: absolute;
+  left: 6px;
+  background: #0f5132;
+}
+
+.instructions {
+  font-size: 10px;
+  border-radius: 0.5rem;
+  background: #000;
+  color: white;
+  padding: 5px;
+  position: absolute;
+  left: 6px;
+}
+
+.instructions > svg {
+  margin-right: 10px;
+}
+*/
+
+/*...........................................................Verify container.....................................................................*/
+.verify-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+  font-size: 15px;
+}
+
+.verify-main {
+  background-color: rgb(239, 236, 236);
+  width: 650px;
+  height: 350px;
+  padding: 20px;
+}
+.verify-main p {
+  font-size: 18px;
+  margin-top: 4px;
+}
+
+.verify-main input {
+  width: 50%;
+  height: 40px;
+  outline: none;
+  border: 1px solid rgb(230, 226, 226);
+  border-radius: 5px;
+  font-size: 20px;
+  text-align: left;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.verify-btn {
+  width: 50%;
+  height: 40px;
+  background-color: #1d4ed8;
+  color: #ffff;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  border: none;
 }

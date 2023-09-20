@@ -13,22 +13,17 @@ const Login = () => {
     const loginCredentials = { email: email, password: password };
     userLogin(loginCredentials)
       .then((response) => {
-        console.log(response);
-        try {
-          if (response.status === 200) {
-            navigate("/dashboard");
-          }
-        } catch (error) {
-          console.log(error);
+        if (response.status === 200) {
+          navigate("/dashboard");
         }
       })
       .catch((error) => {
-        console.log(error.response);
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-        console.log(error.request);
-        console.log(error.message);
+        //console.log(error.response);
+        console.log(error.response.data.msg);
+        // console.log(error.response.status);
+        // console.log(error.response.headers);
+        //  console.log(error.request);
+        // console.log(error.message);
       });
   };
 

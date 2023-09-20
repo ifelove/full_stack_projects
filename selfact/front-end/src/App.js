@@ -1,6 +1,9 @@
 import Navbar from "./components/Navbar";
 import Landing from "./components/landing/Landing";
 import Login from "./components/user/Login";
+import EmailConfirmation from "./components/user/EmailConfirmation";
+import ForgotPassword from "./components/user/ForgotPassword";
+import ResetPassword from "./components/user/ResetPassword";
 
 import { BrowserRouter, Router, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -12,8 +15,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact Component={Landing}></Route>
-          <Route path="/register"  Component={Register}></Route>
-          <Route path="/login"  Component={Login}></Route>
+          <Route path="/register" Component={Register}></Route>
+          <Route path="/login" Component={Login}></Route>
+          <Route path="/verify" Component={EmailConfirmation}></Route>
+          <Route path="/forgotpassword" Component={ForgotPassword}></Route>
+          <Route path="/resetpassword" Component={ResetPassword}></Route>
         </Routes>
       </BrowserRouter>
     </div>
